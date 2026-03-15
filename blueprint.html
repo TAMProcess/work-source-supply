@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Automation Blueprint | Work Source Supply</title>
+  <meta name="description" content="Get a free, personalized automation blueprint for your business. Tell us what you do and we'll show you exactly what we'd build.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="noise"></div>
+
+  <nav id="nav" class="glass-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="automations.html" class="nav-link">Automations</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="examples.html" class="nav-link">Examples</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blueprint.html" class="nav-link nav-link--cta magnetic-btn"><span class="btn-text" data-text="Free Plan">Free Plan</span></a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="container text-center">
+      <div class="section-label reveal-up">Free Blueprint</div>
+      <h1 class="section-heading reveal-up" style="font-size:clamp(1.8rem,5vw,3.2rem)">Get Your Free<br><span class="accent-text">Automation Blueprint.</span></h1>
+      <p class="section-sub centered reveal-up">Tell us about your business. We'll send you a detailed plan showing exactly what we'd automate, how it works, and how much you'll save.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="blueprint-grid">
+
+        <div class="blueprint-benefits reveal-up">
+          <h3>What You Get</h3>
+          <div class="benefit-item">
+            <div class="benefit-icon">&#128196;</div>
+            <div>
+              <h4>Personalized Automation Map</h4>
+              <p>A visual breakdown of every process we'd automate in your business.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">&#128176;</div>
+            <div>
+              <h4>Cost Savings Analysis</h4>
+              <p>See exactly how much time and money automation would save you each month.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">&#9889;</div>
+            <div>
+              <h4>Priority Recommendations</h4>
+              <p>We rank your automations by ROI so you know what to build first.</p>
+            </div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">&#128640;</div>
+            <div>
+              <h4>Implementation Timeline</h4>
+              <p>A realistic plan with milestones and delivery dates.</p>
+            </div>
+          </div>
+          <p class="benefit-note">100% free. No commitment. Takes 2 minutes to fill out.</p>
+        </div>
+
+        <div class="form-card glass reveal-up">
+          <form id="blueprintForm">
+            <div class="form-group">
+              <label for="bp-name">Your Name</label>
+              <input type="text" id="bp-name" name="name" placeholder="John Smith" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="bp-email">Business Email</label>
+              <input type="email" id="bp-email" name="email" placeholder="john@company.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="bp-phone">Phone (optional)</label>
+              <input type="tel" id="bp-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bp-business">Business Type</label>
+                <select id="bp-business" name="businessType" required>
+                  <option value="" disabled selected>Select your industry</option>
+                  <option value="contractor">Contractor</option>
+                  <option value="realestate">Real Estate</option>
+                  <option value="inspector">Home Inspector</option>
+                  <option value="law">Law Firm</option>
+                  <option value="medical">Medical Practice</option>
+                  <option value="restaurant">Restaurant</option>
+                  <option value="ecommerce">E-Commerce</option>
+                  <option value="agency">Marketing Agency</option>
+                  <option value="photographer">Photographer</option>
+                  <option value="events">Event Planner</option>
+                  <option value="consultant">Consultant</option>
+                  <option value="coach">Coach / Trainer</option>
+                  <option value="homeservice">Home Service</option>
+                  <option value="insurance">Insurance</option>
+                  <option value="property">Property Manager</option>
+                  <option value="construction">Construction</option>
+                  <option value="freelancer">Freelancer</option>
+                  <option value="startup">Startup</option>
+                  <option value="local">Local Business</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bp-team">Team Size</label>
+                <select id="bp-team" name="teamSize" required>
+                  <option value="" disabled selected>Select size</option>
+                  <option value="just-me">Just me</option>
+                  <option value="2-5">2-5 people</option>
+                  <option value="6-15">6-15 people</option>
+                  <option value="16-50">16-50 people</option>
+                  <option value="50+">50+ people</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="bp-problem">What's Your Biggest Pain Point?</label>
+              <textarea id="bp-problem" name="problem" rows="4" placeholder="Example: I spend 3 hours a day answering the same customer questions. I wish I had an AI that could handle it." required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="bp-software">Current Software You Use (optional)</label>
+              <input type="text" id="bp-software" name="currentSoftware" placeholder="e.g., QuickBooks, Google Sheets, Calendly...">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg magnetic-btn"><span class="btn-text" data-text="Send My Free Blueprint">Send My Free Blueprint</span></button>
+            <p class="form-disclaimer">We'll review your info and send your personalized automation blueprint within 48 hours. No spam, ever.</p>
+          </form>
+          <div id="formSuccess" class="form-success" style="display:none">
+            <div class="success-icon">&#10003;</div>
+            <h3>Blueprint Request Sent!</h3>
+            <p>We're building your custom automation plan. Check your email within 48 hours.</p>
+            <a href="automations.html" class="btn btn-outline">Browse Automations While You Wait</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span><p class="footer-tagline">We turn your business into an automated system.</p></div>
+        <div class="footer-col"><h5>Explore</h5><a href="automations.html">Automations</a><a href="industries.html">Industries</a><a href="pricing.html">Pricing</a><a href="examples.html">Examples</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="blueprint.html">Free Plan</a></div>
+        <div class="footer-col"><h5>Get Started</h5><a href="blueprint.html">Free Automation Plan</a><a href="automations.html">Browse Automations</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Work Source Supply. All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

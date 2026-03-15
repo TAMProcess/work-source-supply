@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Industry Automation | Work Source Supply</title>
+  <meta name="description" content="See exactly what automations we can build for your industry.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="noise"></div>
+
+  <nav id="nav" class="glass-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="automations.html" class="nav-link">Automations</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="examples.html" class="nav-link">Examples</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blueprint.html" class="nav-link nav-link--cta magnetic-btn"><span class="btn-text" data-text="Free Plan">Free Plan</span></a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="container text-center">
+      <div class="section-label reveal-up" id="industryIcon"></div>
+      <h1 class="section-heading reveal-up" id="industryTitle" style="font-size:clamp(1.8rem,5vw,3.2rem)">Loading...</h1>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div id="industryContent"></div>
+
+      <div style="margin-top:3rem;text-align:center" class="reveal-up">
+        <a href="blueprint.html" class="btn btn-primary btn-lg magnetic-btn"><span class="btn-text" data-text="Get My Free Automation Plan">Get My Free Automation Plan</span></a>
+        <div style="margin-top:1rem">
+          <a href="industries.html" style="color:var(--accent-blue);font-size:.85rem">&#8592; Back to all industries</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span><p class="footer-tagline">We turn your business into an automated system.</p></div>
+        <div class="footer-col"><h5>Explore</h5><a href="automations.html">Automations</a><a href="industries.html">Industries</a><a href="pricing.html">Pricing</a><a href="examples.html">Examples</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="blueprint.html">Free Plan</a></div>
+        <div class="footer-col"><h5>Get Started</h5><a href="blueprint.html">Free Automation Plan</a><a href="automations.html">Browse Automations</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Work Source Supply. All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script>
+  // Industry data — all 19 industries
+  var INDUSTRY_DATA = {
+    contractor: {
+      name: 'Contractor', icon: '\uD83D\uDD28',
+      desc: 'We build custom automation systems for contractors — from AI-powered quote generation to automated job scheduling, invoicing, and crew management. Stop chasing paperwork and start closing more jobs.',
+      automations: [
+        'AI-powered quote generation from photos',
+        'Automatic job scheduling and dispatch',
+        'Customer messaging and follow-up automation',
+        'Invoice creation and payment collection',
+        'Project tracking dashboards',
+        'Crew management and time tracking',
+        'AI receptionist for incoming calls',
+        'Proposal generation tools',
+        'Material cost estimators',
+        'Review request automation after job completion',
+        'Lead capture and qualification',
+        'Contract generation and digital signatures',
+      ]
+    },
+    realestate: {
+      name: 'Real Estate', icon: '\uD83C\uDFE0',
+      desc: 'Automate your real estate business from lead capture to closing. AI qualification, automated follow-ups, listing marketing, document generation, and CRM — all built for how you actually work.',
+      automations: [
+        'AI lead qualification and scoring',
+        'Automatic showing scheduling',
+        'Listing marketing automation',
+        'Client follow-up sequences',
+        'Document generation (contracts, disclosures)',
+        'Market analysis report builders',
+        'CRM with automatic lead routing',
+        'Open house sign-in to follow-up automation',
+        'AI email responses to inquiries',
+        'Drip campaigns for nurturing leads',
+        'Transaction management dashboards',
+        'Commission tracking and reporting',
+      ]
+    },
+    inspector: {
+      name: 'Inspector', icon: '\uD83D\uDD0D',
+      desc: 'From inspection scheduling to report generation — we automate the entire inspector workflow. Spend less time on paperwork and more time in the field.',
+      automations: [
+        'Inspection report auto-generation',
+        'Photo upload and organization apps',
+        'Scheduling and calendar automation',
+        'Client portal with report delivery',
+        'Invoice and payment automation',
+        'Template-based report builders',
+        'AI-assisted defect descriptions',
+        'Appointment reminder notifications',
+        'Lead capture from website',
+        'Review request automation',
+      ]
+    },
+    law: {
+      name: 'Law Firm', icon: '\u2696\uFE0F',
+      desc: 'We build automation systems for law firms — client intake, document automation, case tracking, billing, and AI contract review. Reduce admin overhead and focus on practicing law.',
+      automations: [
+        'AI client intake forms and qualification',
+        'Contract review and summarization',
+        'Appointment scheduling automation',
+        'Document generation (pleadings, letters, contracts)',
+        'Case tracking dashboards',
+        'Billing and time tracking automation',
+        'Client portal with secure document sharing',
+        'AI legal research assistant',
+        'Deadline and statute tracking',
+        'Email automation for client updates',
+        'Digital signatures and e-filing prep',
+      ]
+    },
+    medical: {
+      name: 'Medical Office', icon: '\uD83C\uDFE5',
+      desc: 'Automate your medical practice — from AI receptionist and patient scheduling to insurance verification and follow-up care. Reduce no-shows and free up your staff.',
+      automations: [
+        'AI receptionist answering calls 24/7',
+        'Patient scheduling automation',
+        'Appointment reminder calls and texts',
+        'Patient portal',
+        'Insurance verification workflows',
+        'Follow-up care automation',
+        'Intake form digitization',
+        'Prescription refill reminders',
+        'Wait time notifications',
+        'Review request automation',
+        'Staff scheduling',
+      ]
+    },
+    restaurant: {
+      name: 'Restaurant', icon: '\uD83C\uDF7D\uFE0F',
+      desc: 'We build automation systems for restaurants — AI phone ordering, online ordering, inventory tracking, scheduling, review management, and reservation systems.',
+      automations: [
+        'AI answering phone orders',
+        'Online ordering system',
+        'Inventory tracking and alerts',
+        'Employee scheduling automation',
+        'Customer review management',
+        'Reservation management system',
+        'Loyalty program automation',
+        'Supplier ordering automation',
+        'Social media posting automation',
+        'Customer feedback collection',
+        'Menu management system',
+      ]
+    },
+    ecommerce: {
+      name: 'E-commerce', icon: '\uD83D\uDED2',
+      desc: 'Scale your online store with automation — order fulfillment, inventory management, customer support AI, email marketing, analytics, and shipping automation.',
+      automations: [
+        'Order fulfillment automation',
+        'Inventory management and alerts',
+        'AI customer support chatbot',
+        'Email marketing sequences',
+        'Abandoned cart recovery',
+        'Product recommendation AI',
+        'Shipping and tracking automation',
+        'Review collection automation',
+        'Pricing optimization tools',
+        'Returns and refund automation',
+        'Sales analytics dashboards',
+      ]
+    },
+    agency: {
+      name: 'Marketing Agency', icon: '\uD83D\uDCC8',
+      desc: 'We automate marketing agency operations — client reporting, social media management, ad campaign tracking, content generation, project management, and billing.',
+      automations: [
+        'Automated client reporting dashboards',
+        'Social media scheduling and posting',
+        'Ad campaign tracking and alerts',
+        'AI content generation tools',
+        'Project management automation',
+        'Client onboarding workflows',
+        'Time tracking and billing',
+        'Proposal generation',
+        'Lead generation funnels',
+        'SEO tracking dashboards',
+      ]
+    },
+    photographer: {
+      name: 'Photographer', icon: '\uD83D\uDCF7',
+      desc: 'Automate your photography business — booking, invoicing, gallery delivery, client communication, and editing workflow management.',
+      automations: [
+        'Online booking system',
+        'Gallery delivery portals',
+        'Client communication sequences',
+        'Invoice and payment automation',
+        'Contract generation and signing',
+        'Editing workflow management',
+        'Social media auto-posting',
+        'Review request automation',
+        'Calendar sync',
+        'Lead capture and follow-up',
+      ]
+    },
+    events: {
+      name: 'Event Planner', icon: '\uD83C\uDF89',
+      desc: 'We build automation for event planners — booking management, vendor coordination, guest management, timeline automation, invoicing, and communication workflows.',
+      automations: [
+        'Event booking management system',
+        'Vendor coordination automation',
+        'Guest list and RSVP management',
+        'Timeline and checklist automation',
+        'Invoice and payment tracking',
+        'Client communication sequences',
+        'Venue availability calendars',
+        'Budget tracking dashboards',
+        'Post-event feedback collection',
+        'Social media event promotion',
+      ]
+    },
+    consultant: {
+      name: 'Consultant', icon: '\uD83D\uDCBC',
+      desc: 'Automate your consulting practice — client intake, scheduling, proposals, project tracking, invoicing, and CRM. Spend time consulting, not doing admin.',
+      automations: [
+        'Client intake and qualification forms',
+        'Scheduling and calendar automation',
+        'Proposal generation tools',
+        'Project tracking dashboards',
+        'Invoicing and payment automation',
+        'CRM with pipeline views',
+        'Client portal with document sharing',
+        'Email follow-up sequences',
+        'Time tracking automation',
+        'Report generation tools',
+      ]
+    },
+    coach: {
+      name: 'Coach', icon: '\uD83C\uDFC6',
+      desc: 'We build systems for coaches — client scheduling, program delivery, payment collection, progress tracking, content delivery, and community management.',
+      automations: [
+        'Client scheduling automation',
+        'Program and course delivery systems',
+        'Payment collection and subscriptions',
+        'Progress tracking dashboards',
+        'Content delivery automation',
+        'Community platform setup',
+        'Client onboarding sequences',
+        'Session reminder notifications',
+        'Testimonial collection',
+        'Social media content automation',
+      ]
+    },
+    homeservice: {
+      name: 'Home Service', icon: '\uD83D\uDD27',
+      desc: 'We automate home service businesses — HVAC, plumbing, electrical, cleaning, landscaping. Dispatch, scheduling, invoicing, customer communication, and review management.',
+      automations: [
+        'Dispatch and scheduling automation',
+        'Customer communication sequences',
+        'Invoice and payment collection',
+        'Review request automation',
+        'Quote generation tools',
+        'Job tracking dashboards',
+        'GPS technician tracking',
+        'Parts inventory management',
+        'AI receptionist for calls',
+        'Recurring service reminders',
+        'Equipment maintenance tracking',
+      ]
+    },
+    insurance: {
+      name: 'Insurance Agent', icon: '\uD83D\uDCDC',
+      desc: 'Automate your insurance business — lead management, policy tracking, renewal reminders, document generation, client portals, and claims tracking.',
+      automations: [
+        'Lead management and scoring',
+        'Policy tracking dashboards',
+        'Renewal reminder automation',
+        'Document generation (quotes, policies)',
+        'Client portal with policy access',
+        'Claims tracking automation',
+        'Cross-sell and upsell automation',
+        'Client birthday and milestone emails',
+        'Referral program automation',
+        'Commission tracking',
+      ]
+    },
+    property: {
+      name: 'Property Manager', icon: '\uD83C\uDFE2',
+      desc: 'We build property management automation — tenant management, maintenance requests, rent collection, lease tracking, vendor coordination, and financial reporting.',
+      automations: [
+        'Tenant management portals',
+        'Maintenance request tracking',
+        'Rent collection automation',
+        'Lease tracking and renewal reminders',
+        'Vendor management system',
+        'Financial reporting dashboards',
+        'Tenant screening automation',
+        'Move-in/move-out checklists',
+        'Property inspection apps',
+        'Communication automation',
+      ]
+    },
+    construction: {
+      name: 'Construction', icon: '\uD83D\uDEA7',
+      desc: 'Automate your construction business — project management, bidding, material tracking, crew scheduling, compliance, and invoicing. Build more, manage less.',
+      automations: [
+        'Project management dashboards',
+        'Bidding and estimation tools',
+        'Material tracking and ordering',
+        'Crew scheduling automation',
+        'Compliance and safety tracking',
+        'Invoice and payment automation',
+        'Document management systems',
+        'Progress photo tracking',
+        'Subcontractor management',
+        'Budget tracking and reporting',
+      ]
+    },
+    freelancer: {
+      name: 'Freelancer', icon: '\uD83D\uDCBB',
+      desc: 'We build automation for freelancers — client management, invoicing, time tracking, proposals, portfolio systems, and contract management. Work smarter, earn more.',
+      automations: [
+        'Client management CRM',
+        'Invoicing and payment automation',
+        'Time tracking tools',
+        'Proposal generation',
+        'Portfolio website systems',
+        'Contract generation and signing',
+        'Project tracking dashboards',
+        'Email follow-up automation',
+        'Lead capture and qualification',
+        'Accounting integration',
+      ]
+    },
+    startup: {
+      name: 'Startup', icon: '\uD83D\uDE80',
+      desc: 'We help startups build fast — MVP development, customer acquisition systems, analytics, automation stacks, team tools, and investor-ready dashboards.',
+      automations: [
+        'MVP development and prototyping',
+        'Customer acquisition funnels',
+        'Analytics and KPI dashboards',
+        'Email and notification automation',
+        'User onboarding flows',
+        'Investor update dashboards',
+        'Team collaboration tools',
+        'Customer feedback systems',
+        'Payment and subscription systems',
+        'API integrations',
+      ]
+    },
+    local: {
+      name: 'Local Business', icon: '\uD83C\uDFEA',
+      desc: 'We automate local businesses — online presence, booking, review management, local SEO, customer loyalty programs, appointment scheduling, and social media.',
+      automations: [
+        'Professional website with booking',
+        'Google Business optimization',
+        'Review management and responses',
+        'Local SEO automation',
+        'Customer loyalty program',
+        'Appointment scheduling system',
+        'Social media posting automation',
+        'Email marketing for regulars',
+        'Invoice and POS integration',
+        'Customer communication automation',
+      ]
+    }
+  };
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

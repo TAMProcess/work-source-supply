@@ -3,85 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work Source Supply | We Turn Your Business Into an Automated System</title>
-  <meta name="description" content="Custom AI systems, automations, websites, dashboards, apps, and tools tailored to your business — often for less than the cost of one software subscription.">
+  <title>Work Source Supply | Automate Your Business. Save Thousands.</title>
+  <meta name="description" content="Custom AI systems, automations, websites, dashboards, apps & tools — built for your business, often for less than one software subscription.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    #loader{position:fixed;inset:0;z-index:10000;background:#050510;display:flex;align-items:center;justify-content:center;flex-direction:column}
-    #loader-canvas{position:absolute;inset:0;width:100%;height:100%}
-    .loader-content{position:relative;z-index:2;text-align:center}
-    .loader-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,4vw,3.2rem);font-weight:800;letter-spacing:.15em;color:#fff;margin-bottom:.5rem}
-    .loader-sub{font-family:'Inter',sans-serif;font-size:.85rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2rem}
-    .loader-bar{width:220px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;margin:0 auto;overflow:hidden}
-    .loader-progress{width:0%;height:100%;background:linear-gradient(90deg,#00d4ff,#7b2fff);border-radius:2px;transition:width .3s}
-    .loader-pct{font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:rgba(255,255,255,.3);margin-top:.75rem;letter-spacing:.15em}
-  </style>
 </head>
 <body>
 
-  <!-- ========== LOADER ========== -->
+  <!-- LOADER -->
   <div id="loader">
     <canvas id="loader-canvas"></canvas>
     <div class="loader-content">
-      <div class="loader-title" id="loaderTitle">WORK SOURCE SUPPLY</div>
+      <div class="loader-spinner"></div>
+      <div class="loader-title">WORK SOURCE SUPPLY</div>
       <div class="loader-sub">Business Automation Studio</div>
       <div class="loader-bar"><div class="loader-progress" id="loaderProgress"></div></div>
-      <div class="loader-pct" id="loaderPct">0%</div>
     </div>
   </div>
 
-  <!-- ========== CURSOR ========== -->
+  <!-- CURSOR -->
   <div class="cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursorFollower"></div>
-
-  <!-- ========== THREE.JS CANVAS ========== -->
   <canvas id="bg-canvas"></canvas>
-
-  <!-- ========== NOISE ========== -->
   <div class="noise"></div>
 
-  <!-- ========== NAV ========== -->
+  <!-- NAV -->
   <nav id="nav" class="glass-nav">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <span class="logo-mark">WSS</span>
         <span class="logo-text">Work Source Supply</span>
       </a>
       <div class="nav-links" id="navLinks">
-        <a href="#choose" class="nav-link">Industries</a>
-        <a href="#automations" class="nav-link">Automations</a>
-        <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#examples" class="nav-link">Examples</a>
-        <a href="#blueprint" class="nav-link nav-link--cta magnetic-btn">
-          <span class="btn-text">Free Automation Plan</span>
+        <a href="automations.html" class="nav-link">Automations</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="examples.html" class="nav-link">Examples</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blueprint.html" class="nav-link nav-link--cta magnetic-btn">
+          <span class="btn-text" data-text="Free Plan">Free Plan</span>
         </a>
       </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ========================================================
-       HERO — THE OPENING PITCH
-  ========================================================= -->
-  <section id="hero" class="section hero">
+  <!-- ===== HERO ===== -->
+  <section class="section hero">
     <div class="hero-content">
       <div class="hero-badge reveal-up">40+ Developers &bull; Custom Built &bull; AI Powered</div>
       <h1 class="hero-heading">
-        <span class="reveal-up" style="--d:.1s">Automate Your Business.</span>
-        <span class="reveal-up accent-text" style="--d:.25s">Save Thousands.</span>
-        <span class="reveal-up" style="--d:.4s">Work Less. Scale Faster.</span>
+        <span class="reveal-up">Automate Your Business.</span>
+        <span class="reveal-up accent-text">Save Thousands.</span>
+        <span class="reveal-up">Work Less. Scale Faster.</span>
       </h1>
-      <p class="hero-sub reveal-up" style="--d:.55s">We build custom AI systems, automations, websites, dashboards, apps, and tools<br>tailored to your business — often for less than the cost of one software subscription.</p>
-      <div class="hero-btns reveal-up" style="--d:.7s">
-        <a href="#automations" class="btn btn-primary magnetic-btn"><span class="btn-text" data-text="See What We Can Automate">See What We Can Automate</span></a>
-        <a href="#choose" class="btn btn-outline magnetic-btn"><span class="btn-text" data-text="Select Your Business Type">Select Your Business Type</span></a>
+      <p class="hero-sub reveal-up">We build custom AI systems, automations, websites, dashboards, apps &amp; tools — tailored to your business.</p>
+
+      <!-- SEARCH BAR -->
+      <div class="search-wrap reveal-up" style="margin-bottom:2rem">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" class="search-input" id="siteSearch" placeholder="What does your business do?" autocomplete="off">
+        <div class="search-results" id="searchResults"></div>
       </div>
-      <div class="hero-taglines reveal-up" style="--d:.9s">
+
+      <div class="hero-btns reveal-up">
+        <a href="automations.html" class="btn btn-primary magnetic-btn"><span class="btn-text" data-text="See What We Automate">See What We Automate</span></a>
+        <a href="industries.html" class="btn btn-outline magnetic-btn"><span class="btn-text" data-text="Find Your Industry">Find Your Industry</span></a>
+      </div>
+      <div class="hero-taglines reveal-up">
         <span id="rotatingTagline"></span>
       </div>
     </div>
@@ -91,7 +84,7 @@
     </div>
   </section>
 
-  <!-- ========== MARQUEE ========== -->
+  <!-- ===== MARQUEE ===== -->
   <div class="marquee-section">
     <div class="marquee-track">
       <div class="marquee-content">
@@ -119,545 +112,140 @@
     </div>
   </div>
 
-  <!-- ========================================================
-       CHOOSE YOUR BUSINESS TYPE
-  ========================================================= -->
-  <section id="choose" class="section choose">
+  <!-- ===== WHAT WE DO ===== -->
+  <section class="section">
     <div class="container">
-      <div class="section-label reveal-up">Step 1</div>
-      <h2 class="section-heading reveal-up">What Kind of Business<br><span class="accent-text">Do You Run?</span></h2>
-      <p class="section-sub reveal-up">Click your industry and we'll show you exactly what we can automate for you.</p>
-      <div class="biz-grid" id="bizGrid">
-        <button class="biz-card glass reveal-up" data-biz="contractor"><span class="biz-icon">&#128736;</span><span>Contractors</span></button>
-        <button class="biz-card glass reveal-up" data-biz="realestate"><span class="biz-icon">&#127968;</span><span>Real Estate</span></button>
-        <button class="biz-card glass reveal-up" data-biz="inspector"><span class="biz-icon">&#128269;</span><span>Inspectors</span></button>
-        <button class="biz-card glass reveal-up" data-biz="law"><span class="biz-icon">&#9878;</span><span>Law Firms</span></button>
-        <button class="biz-card glass reveal-up" data-biz="medical"><span class="biz-icon">&#128137;</span><span>Medical Offices</span></button>
-        <button class="biz-card glass reveal-up" data-biz="restaurant"><span class="biz-icon">&#127869;</span><span>Restaurants</span></button>
-        <button class="biz-card glass reveal-up" data-biz="ecommerce"><span class="biz-icon">&#128722;</span><span>E-commerce</span></button>
-        <button class="biz-card glass reveal-up" data-biz="agency"><span class="biz-icon">&#128200;</span><span>Marketing Agencies</span></button>
-        <button class="biz-card glass reveal-up" data-biz="photographer"><span class="biz-icon">&#128247;</span><span>Photographers</span></button>
-        <button class="biz-card glass reveal-up" data-biz="events"><span class="biz-icon">&#127881;</span><span>Event Planners</span></button>
-        <button class="biz-card glass reveal-up" data-biz="consultant"><span class="biz-icon">&#128188;</span><span>Consultants</span></button>
-        <button class="biz-card glass reveal-up" data-biz="coach"><span class="biz-icon">&#127942;</span><span>Coaches</span></button>
-        <button class="biz-card glass reveal-up" data-biz="homeservice"><span class="biz-icon">&#128295;</span><span>Home Services</span></button>
-        <button class="biz-card glass reveal-up" data-biz="insurance"><span class="biz-icon">&#128220;</span><span>Insurance Agents</span></button>
-        <button class="biz-card glass reveal-up" data-biz="property"><span class="biz-icon">&#127970;</span><span>Property Managers</span></button>
-        <button class="biz-card glass reveal-up" data-biz="construction"><span class="biz-icon">&#128679;</span><span>Construction</span></button>
-        <button class="biz-card glass reveal-up" data-biz="freelancer"><span class="biz-icon">&#128187;</span><span>Freelancers</span></button>
-        <button class="biz-card glass reveal-up" data-biz="startup"><span class="biz-icon">&#128640;</span><span>Startups</span></button>
-        <button class="biz-card glass reveal-up" data-biz="local"><span class="biz-icon">&#127978;</span><span>Local Businesses</span></button>
+      <div class="section-label reveal-up">What We Do</div>
+      <h2 class="section-heading reveal-up">Everything Your Business Needs.<br><span class="accent-text">One Team. One System.</span></h2>
+      <div class="feature-grid">
+        <a href="automations.html" class="feature-card glass reveal-up">
+          <div class="feature-icon">&#9889;</div>
+          <div class="feature-body">
+            <h3>150+ Automations</h3>
+            <p>Sales, phone AI, email, documents, marketing, booking, finance — we automate every repetitive task in your business.</p>
+            <span class="feature-link">Browse all automations &rarr;</span>
+          </div>
+        </a>
+        <a href="pricing.html" class="feature-card glass reveal-up">
+          <div class="feature-icon">&#128176;</div>
+          <div class="feature-body">
+            <h3>Replace 10 Tools With One</h3>
+            <p>Stop paying for CRM, scheduling, proposals, analytics, email marketing separately. We build one system that does it all.</p>
+            <span class="feature-link">See pricing &rarr;</span>
+          </div>
+        </a>
+        <a href="examples.html" class="feature-card glass reveal-up">
+          <div class="feature-icon">&#129302;</div>
+          <div class="feature-body">
+            <h3>AI Employees That Work 24/7</h3>
+            <p>AI receptionists, sales agents, support bots, and more. Your business runs even when you're asleep.</p>
+            <span class="feature-link">See real examples &rarr;</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       AUTOMATIONS — THE CORE
-  ========================================================= -->
-  <section id="automations" class="section automations">
+  <!-- ===== INDUSTRIES (scrollable pills) ===== -->
+  <section class="section">
     <div class="container">
-      <div class="section-label reveal-up">Step 2</div>
-      <h2 class="section-heading reveal-up">Everything We Can<br><span class="accent-text">Automate For You.</span></h2>
-      <p class="section-sub reveal-up">Stop doing repetitive work. Here's what your business looks like when it runs itself.</p>
-
-      <!-- Category Filter Tabs -->
-      <div class="auto-tabs" id="autoTabs">
-        <button class="auto-tab active" data-cat="all">All</button>
-        <button class="auto-tab" data-cat="sales">Sales &amp; Leads</button>
-        <button class="auto-tab" data-cat="phone">Phone &amp; Voice</button>
-        <button class="auto-tab" data-cat="email">Email</button>
-        <button class="auto-tab" data-cat="docs">Documents</button>
-        <button class="auto-tab" data-cat="website">Websites</button>
-        <button class="auto-tab" data-cat="apps">Apps</button>
-        <button class="auto-tab" data-cat="dashboard">Dashboards</button>
-        <button class="auto-tab" data-cat="process">Process</button>
-        <button class="auto-tab" data-cat="marketing">Marketing</button>
-        <button class="auto-tab" data-cat="support">Support</button>
-        <button class="auto-tab" data-cat="booking">Booking</button>
-        <button class="auto-tab" data-cat="finance">Finance</button>
-        <button class="auto-tab" data-cat="data">AI Data</button>
-        <button class="auto-tab" data-cat="insane">&#9889; Power Moves</button>
+      <div class="section-label reveal-up">Industries</div>
+      <h2 class="section-heading reveal-up">We Build For <span class="accent-text">Every Industry.</span></h2>
+      <p class="section-sub reveal-up">Click your business type to see exactly what we can build for you.</p>
+      <div class="industry-scroll reveal-up">
+        <a href="industry.html?type=contractor" class="industry-pill"><span class="industry-pill-icon">&#128296;</span> Contractors</a>
+        <a href="industry.html?type=realestate" class="industry-pill"><span class="industry-pill-icon">&#127968;</span> Real Estate</a>
+        <a href="industry.html?type=inspector" class="industry-pill"><span class="industry-pill-icon">&#128269;</span> Inspectors</a>
+        <a href="industry.html?type=law" class="industry-pill"><span class="industry-pill-icon">&#9878;</span> Law Firms</a>
+        <a href="industry.html?type=medical" class="industry-pill"><span class="industry-pill-icon">&#128137;</span> Medical</a>
+        <a href="industry.html?type=restaurant" class="industry-pill"><span class="industry-pill-icon">&#127869;</span> Restaurants</a>
+        <a href="industry.html?type=ecommerce" class="industry-pill"><span class="industry-pill-icon">&#128722;</span> E-commerce</a>
+        <a href="industry.html?type=agency" class="industry-pill"><span class="industry-pill-icon">&#128200;</span> Agencies</a>
+        <a href="industry.html?type=photographer" class="industry-pill"><span class="industry-pill-icon">&#128247;</span> Photographers</a>
+        <a href="industry.html?type=events" class="industry-pill"><span class="industry-pill-icon">&#127881;</span> Events</a>
+        <a href="industry.html?type=consultant" class="industry-pill"><span class="industry-pill-icon">&#128188;</span> Consultants</a>
+        <a href="industry.html?type=coach" class="industry-pill"><span class="industry-pill-icon">&#127942;</span> Coaches</a>
+        <a href="industry.html?type=homeservice" class="industry-pill"><span class="industry-pill-icon">&#128295;</span> Home Services</a>
+        <a href="industry.html?type=insurance" class="industry-pill"><span class="industry-pill-icon">&#128220;</span> Insurance</a>
+        <a href="industry.html?type=property" class="industry-pill"><span class="industry-pill-icon">&#127970;</span> Property Mgmt</a>
+        <a href="industry.html?type=construction" class="industry-pill"><span class="industry-pill-icon">&#128679;</span> Construction</a>
+        <a href="industry.html?type=freelancer" class="industry-pill"><span class="industry-pill-icon">&#128187;</span> Freelancers</a>
+        <a href="industry.html?type=startup" class="industry-pill"><span class="industry-pill-icon">&#128640;</span> Startups</a>
+        <a href="industry.html?type=local" class="industry-pill"><span class="industry-pill-icon">&#127978;</span> Local Biz</a>
       </div>
-
-      <div class="auto-grid" id="autoGrid">
-
-        <!-- SALES & LEAD AUTOMATION -->
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>AI answers incoming leads instantly</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic call answering AI receptionist</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>AI qualification of leads</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Lead follow-up messages sent automatically</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic proposal generation</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>AI sales assistant for website inquiries</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Smart CRM that organizes leads automatically</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic appointment scheduling</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automated reminder calls and texts</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>AI call summaries sent to team</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>AI sales coaching from call recordings</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Lead scoring automation</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic follow-up emails until lead responds</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic contract sending</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Automatic payment link generation</div>
-        <div class="auto-item glass" data-cat="sales"><span class="auto-dot"></span>Lead routing to the correct sales rep</div>
-
-        <!-- PHONE & VOICE -->
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>AI receptionist answering calls</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>Voice bots scheduling appointments</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>Missed call text back automation</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>Call transcription and summaries</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>AI phone agents answering customer questions</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>After-hours AI support line</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>Phone menu automation</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>AI phone booking system</div>
-        <div class="auto-item glass" data-cat="phone"><span class="auto-dot"></span>Call recording storage and analysis</div>
-
-        <!-- EMAIL -->
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>AI email responses</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Inbox sorting automation</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Automatic follow-ups</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Email marketing campaigns</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Lead nurture sequences</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Proposal emails generated automatically</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Invoice reminder emails</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>Customer onboarding sequences</div>
-        <div class="auto-item glass" data-cat="email"><span class="auto-dot"></span>AI writing responses to customer inquiries</div>
-
-        <!-- DOCUMENTS -->
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Automatic report generation</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Inspection report builders</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Auto-generated contracts</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Proposal generation tools</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Custom PDF form systems</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Smart document templates</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Auto-filled documents from client data</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>AI document writing assistant</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Bulk document generation</div>
-        <div class="auto-item glass" data-cat="docs"><span class="auto-dot"></span>Digital signatures automation</div>
-
-        <!-- WEBSITE -->
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Full websites built for $99 setup</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>AI chat support on website</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Online booking systems</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Automated quote calculators</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Pricing estimators</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Lead capture forms</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Customer portals</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Client dashboards</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Custom landing pages</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>E-commerce systems</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Membership sites</div>
-        <div class="auto-item glass" data-cat="website"><span class="auto-dot"></span>Knowledge base systems</div>
-
-        <!-- APPS -->
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Custom mobile apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Internal company apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Customer apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Booking apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Marketplace apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Delivery apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Field technician apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Inspection apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Photo upload apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>GPS tracking apps</div>
-        <div class="auto-item glass" data-cat="apps"><span class="auto-dot"></span>Client portal apps</div>
-
-        <!-- DASHBOARDS -->
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Custom admin dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Sales dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Client management dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Inventory systems</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Job tracking systems</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Work order management</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>KPI tracking dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Revenue analytics dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Team productivity dashboards</div>
-        <div class="auto-item glass" data-cat="dashboard"><span class="auto-dot"></span>Custom reporting dashboards</div>
-
-        <!-- PROCESS -->
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Automatic invoice creation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Expense tracking automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Payroll automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>CRM automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Task assignment automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Job scheduling automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Customer onboarding automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Client communication automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Contract management automation</div>
-        <div class="auto-item glass" data-cat="process"><span class="auto-dot"></span>Internal workflow automation</div>
-
-        <!-- MARKETING -->
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>Social media auto posting</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>AI content generation</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>AI ad creation</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>Lead generation funnels</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>SMS marketing automation</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>Email marketing automation</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>AI blog writing</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>SEO automation</div>
-        <div class="auto-item glass" data-cat="marketing"><span class="auto-dot"></span>Ad campaign tracking dashboards</div>
-
-        <!-- SUPPORT -->
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>AI support chatbots</div>
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>AI customer support agents</div>
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>Ticket systems</div>
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>FAQ automation</div>
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>Customer support dashboards</div>
-        <div class="auto-item glass" data-cat="support"><span class="auto-dot"></span>AI answering customer questions</div>
-
-        <!-- BOOKING -->
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Appointment booking systems</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Class booking systems</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Event booking systems</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Rental booking systems</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Hotel booking systems</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Calendar automation</div>
-        <div class="auto-item glass" data-cat="booking"><span class="auto-dot"></span>Reminder notifications</div>
-
-        <!-- FINANCE -->
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Automatic invoicing</div>
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Payment collection systems</div>
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Subscription billing</div>
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Expense tracking dashboards</div>
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Financial reporting dashboards</div>
-        <div class="auto-item glass" data-cat="finance"><span class="auto-dot"></span>Automatic tax record systems</div>
-
-        <!-- DATA -->
-        <div class="auto-item glass" data-cat="data"><span class="auto-dot"></span>AI data analysis</div>
-        <div class="auto-item glass" data-cat="data"><span class="auto-dot"></span>Customer behavior tracking</div>
-        <div class="auto-item glass" data-cat="data"><span class="auto-dot"></span>Sales prediction dashboards</div>
-        <div class="auto-item glass" data-cat="data"><span class="auto-dot"></span>Automated reporting</div>
-        <div class="auto-item glass" data-cat="data"><span class="auto-dot"></span>AI recommendations</div>
-
-        <!-- INSANELY VALUABLE -->
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI employees that work 24/7</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>Automatic quote generation from photos</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI writing proposals for you</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>Automatic business report generation</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI scheduling your entire week</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI reading contracts and summarizing them</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI summarizing meetings</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI reviewing customer feedback</div>
-        <div class="auto-item glass auto-item--hot" data-cat="insane"><span class="auto-dot"></span>AI answering emails instantly</div>
-
-      </div>
-
-      <div class="auto-counter" id="autoCounter">
-        <span class="auto-counter-num" id="autoCountNum">150</span>
-        <span class="auto-counter-label">automations available</span>
+      <div style="text-align:center;margin-top:1.25rem" class="reveal-up">
+        <a href="industries.html" class="btn btn-outline" style="font-size:.82rem;padding:.6rem 1.4rem">View all industries &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       CUSTOM SYSTEMS
-  ========================================================= -->
-  <section id="custom" class="section custom-systems">
+  <!-- ===== STATS ===== -->
+  <section class="section" style="padding-top:0;padding-bottom:0">
     <div class="container">
-      <div class="section-label reveal-up">No Limits</div>
-      <h2 class="section-heading reveal-up">If Software Exists,<br><span class="accent-text">We Can Build It.</span></h2>
-      <h3 class="section-heading-sub reveal-up">If It Doesn't Exist, <span class="accent-text">We Can Create It.</span></h3>
-      <div class="custom-grid">
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#9881;</div>
-          <span>Custom CRM Systems</span>
+      <div class="stats-bar glass reveal-up" style="padding:2rem 1rem;border-radius:var(--radius)">
+        <div class="stat-item">
+          <span class="stat-num">150+</span>
+          <span class="stat-label">Automations</span>
         </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#128202;</div>
-          <span>Custom ERP Systems</span>
+        <div class="stat-item">
+          <span class="stat-num">19</span>
+          <span class="stat-label">Industries</span>
         </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#127979;</div>
-          <span>Custom Marketplaces</span>
-        </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#128100;</div>
-          <span>Custom Client Portals</span>
-        </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#128200;</div>
-          <span>Custom Data Dashboards</span>
-        </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#9889;</div>
-          <span>Custom Automation Pipelines</span>
-        </div>
-        <div class="custom-card glass reveal-up">
-          <div class="custom-icon">&#129302;</div>
-          <span>AI-Powered Internal Tools</span>
+        <div class="stat-item">
+          <span class="stat-num">40+</span>
+          <span class="stat-label">Developers</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       REAL EXAMPLES
-  ========================================================= -->
-  <section id="examples" class="section examples">
+  <!-- ===== PRICING TEASER ===== -->
+  <section class="section">
     <div class="container">
-      <div class="section-label reveal-up">Real Automations</div>
-      <h2 class="section-heading reveal-up">See It In Action.<br><span class="accent-text">For Your Industry.</span></h2>
-      <p class="section-sub reveal-up">Here's what automation looks like for real businesses — right now, today.</p>
-    </div>
-    <div class="examples-track">
-      <div class="example-card glass reveal-up">
-        <div class="example-header">
-          <span class="example-icon">&#127869;</span>
-          <h3>Restaurant</h3>
-        </div>
-        <ul class="example-list">
-          <li>AI answering phone orders</li>
-          <li>Automatic online ordering system</li>
-          <li>Inventory tracking</li>
-          <li>Employee scheduling</li>
-          <li>Customer review automation</li>
-          <li>Reservation management</li>
-        </ul>
-      </div>
-      <div class="example-card glass reveal-up">
-        <div class="example-header">
-          <span class="example-icon">&#127968;</span>
-          <h3>Real Estate</h3>
-        </div>
-        <ul class="example-list">
-          <li>AI lead qualification</li>
-          <li>Automatic showing scheduling</li>
-          <li>Listing marketing automation</li>
-          <li>Client follow-up sequences</li>
-          <li>Document generation</li>
-          <li>Market analysis reports</li>
-        </ul>
-      </div>
-      <div class="example-card glass reveal-up">
-        <div class="example-header">
-          <span class="example-icon">&#128736;</span>
-          <h3>Contractor</h3>
-        </div>
-        <ul class="example-list">
-          <li>Quote generation from photos</li>
-          <li>Job scheduling automation</li>
-          <li>Customer messaging automation</li>
-          <li>Invoice and payment collection</li>
-          <li>Project tracking dashboards</li>
-          <li>Crew management tools</li>
-        </ul>
-      </div>
-      <div class="example-card glass reveal-up">
-        <div class="example-header">
-          <span class="example-icon">&#9878;</span>
-          <h3>Law Firm</h3>
-        </div>
-        <ul class="example-list">
-          <li>AI client intake forms</li>
-          <li>Contract summarization</li>
-          <li>Appointment scheduling</li>
-          <li>Document automation</li>
-          <li>Case tracking dashboards</li>
-          <li>Billing automation</li>
-        </ul>
-      </div>
-      <div class="example-card glass reveal-up">
-        <div class="example-header">
-          <span class="example-icon">&#128137;</span>
-          <h3>Medical Office</h3>
-        </div>
-        <ul class="example-list">
-          <li>AI receptionist</li>
-          <li>Patient scheduling</li>
-          <li>Reminder calls &amp; texts</li>
-          <li>Patient portal</li>
-          <li>Insurance verification</li>
-          <li>Follow-up automation</li>
-        </ul>
+      <div class="pricing-teaser glass reveal-up">
+        <h3>Stop paying <span class="accent-text">$500+/month</span> for 10 different tools.</h3>
+        <p>We build one custom system that does everything your business needs.</p>
+        <a href="pricing.html" class="btn btn-primary" style="margin-top:.5rem">See Pricing &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       PRICE DISRUPTION
-  ========================================================= -->
-  <section id="pricing" class="section pricing">
+  <!-- ===== CTA ===== -->
+  <section class="section cta-band">
     <div class="container">
-      <div class="section-label reveal-up">The Math</div>
-      <h2 class="section-heading reveal-up">Stop Paying for 10<br><span class="accent-text">Different Software Tools.</span></h2>
-      <p class="section-sub reveal-up">We build one system that does everything your business needs.</p>
-
-      <div class="pricing-compare">
-        <div class="pricing-col pricing-old glass reveal-up">
-          <h3>Traditional Software Stack</h3>
-          <div class="pricing-row">
-            <span>Website builder</span>
-            <span class="pricing-cost">$3,000 – $10,000</span>
-          </div>
-          <div class="pricing-row">
-            <span>CRM software</span>
-            <span class="pricing-cost">$200/mo</span>
-          </div>
-          <div class="pricing-row">
-            <span>Automation software</span>
-            <span class="pricing-cost">$100/mo</span>
-          </div>
-          <div class="pricing-row">
-            <span>Scheduling software</span>
-            <span class="pricing-cost">$40/mo</span>
-          </div>
-          <div class="pricing-row">
-            <span>Proposal software</span>
-            <span class="pricing-cost">$50/mo</span>
-          </div>
-          <div class="pricing-row">
-            <span>Analytics software</span>
-            <span class="pricing-cost">$100/mo</span>
-          </div>
-          <div class="pricing-total">
-            <span>Monthly total</span>
-            <span class="pricing-total-num strikethrough">$500+/month</span>
-          </div>
-        </div>
-        <div class="pricing-vs reveal-up">
-          <div class="vs-badge">VS</div>
-        </div>
-        <div class="pricing-col pricing-new glass reveal-up">
-          <h3>Work Source Supply</h3>
-          <div class="pricing-highlight">
-            <span class="pricing-big">One Custom System</span>
-            <span class="pricing-small">that does everything</span>
-          </div>
-          <div class="pricing-points">
-            <div class="pricing-point"><span class="check">&#10003;</span> Built for YOUR workflow</div>
-            <div class="pricing-point"><span class="check">&#10003;</span> No monthly per-tool fees</div>
-            <div class="pricing-point"><span class="check">&#10003;</span> You own it — forever</div>
-            <div class="pricing-point"><span class="check">&#10003;</span> All-in-one solution</div>
-            <div class="pricing-point"><span class="check">&#10003;</span> Scales with your business</div>
-          </div>
-          <div class="pricing-total">
-            <span>Often costs less than</span>
-            <span class="pricing-total-num accent-text">a few months of subscriptions</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       MASSIVE CTA
-  ========================================================= -->
-  <section id="cta" class="section cta-section">
-    <div class="container cta-container">
       <h2 class="cta-heading reveal-up">Turn Your Business Into a<br><span class="accent-text">Self-Running Machine.</span></h2>
-      <p class="cta-sub reveal-up">Automate everything. Save thousands in software costs. Custom systems built for your business.</p>
-      <div class="cta-btns reveal-up">
-        <a href="#automations" class="btn btn-primary btn-lg magnetic-btn"><span class="btn-text" data-text="See Automations For My Business">See Automations For My Business</span></a>
-        <a href="#blueprint" class="btn btn-outline btn-lg magnetic-btn"><span class="btn-text" data-text="Get My Free Automation Plan">Get My Free Automation Plan</span></a>
+      <p class="cta-sub reveal-up">Custom AI systems built for your workflow. Not a template — a real solution.</p>
+      <div class="reveal-up" style="text-align:center">
+        <a href="blueprint.html" class="btn btn-primary btn-lg magnetic-btn"><span class="btn-text" data-text="Get My Free Automation Plan">Get My Free Automation Plan</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ========================================================
-       FREE AUTOMATION BLUEPRINT
-  ========================================================= -->
-  <section id="blueprint" class="section blueprint">
-    <div class="container">
-      <div class="blueprint-grid">
-        <div class="blueprint-info reveal-up">
-          <div class="section-label">Free</div>
-          <h2 class="section-heading">Get Your Custom<br><span class="accent-text">Automation Blueprint.</span></h2>
-          <p>Tell us about your business. We'll send you a personalized plan showing:</p>
-          <div class="blueprint-benefits">
-            <div class="blueprint-benefit"><span class="check">&#10003;</span> Automations you could implement today</div>
-            <div class="blueprint-benefit"><span class="check">&#10003;</span> How much money you could save</div>
-            <div class="blueprint-benefit"><span class="check">&#10003;</span> Custom systems we can build for you</div>
-            <div class="blueprint-benefit"><span class="check">&#10003;</span> Priority tasks to automate first</div>
-          </div>
-          <p class="blueprint-note">100% free. No obligation. No sales pressure.</p>
-        </div>
-        <form class="contact-form glass reveal-up" id="blueprintForm" novalidate>
-          <div class="form-group">
-            <input type="text" id="bpName" name="name" required placeholder=" " autocomplete="name">
-            <label for="bpName">Your Name</label>
-            <div class="form-line"></div>
-          </div>
-          <div class="form-group">
-            <input type="email" id="bpEmail" name="email" required placeholder=" " autocomplete="email">
-            <label for="bpEmail">Email Address</label>
-            <div class="form-line"></div>
-          </div>
-          <div class="form-group">
-            <select id="bpBiz" name="business_type" required>
-              <option value="" disabled selected>Your Business Type</option>
-              <option>Contractor</option>
-              <option>Real Estate</option>
-              <option>Inspector</option>
-              <option>Law Firm</option>
-              <option>Medical Office</option>
-              <option>Restaurant</option>
-              <option>E-commerce</option>
-              <option>Marketing Agency</option>
-              <option>Photographer</option>
-              <option>Event Planner</option>
-              <option>Consultant</option>
-              <option>Coach</option>
-              <option>Home Service Business</option>
-              <option>Insurance Agent</option>
-              <option>Property Manager</option>
-              <option>Construction Company</option>
-              <option>Freelancer</option>
-              <option>Startup</option>
-              <option>Local Business</option>
-              <option>Other</option>
-            </select>
-            <div class="form-line"></div>
-          </div>
-          <div class="form-group">
-            <textarea id="bpProblem" name="biggest_problem" rows="3" required placeholder=" "></textarea>
-            <label for="bpProblem">What's your biggest time-wasting task?</label>
-            <div class="form-line"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group form-half">
-              <input type="text" id="bpTeam" name="team_size" placeholder=" ">
-              <label for="bpTeam">Team Size</label>
-              <div class="form-line"></div>
-            </div>
-            <div class="form-group form-half">
-              <input type="text" id="bpSoftware" name="current_software" placeholder=" ">
-              <label for="bpSoftware">Software Currently Used</label>
-              <div class="form-line"></div>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full magnetic-btn">
-            <span class="btn-text" data-text="Get My Free Automation Plan">Get My Free Automation Plan</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-top">
+      <div class="footer-grid">
         <div class="footer-brand">
           <span class="logo-mark">WSS</span>
           <span class="logo-text">Work Source Supply</span>
           <p class="footer-tagline">We turn your business into an automated system.</p>
         </div>
         <div class="footer-col">
-          <h5>Automations</h5>
-          <a href="#automations">Sales &amp; Leads</a>
-          <a href="#automations">Phone &amp; Voice AI</a>
-          <a href="#automations">Documents</a>
-          <a href="#automations">Websites &amp; Apps</a>
+          <h5>Explore</h5>
+          <a href="automations.html">Automations</a>
+          <a href="industries.html">Industries</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="examples.html">Examples</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
-          <a href="#choose">Industries</a>
-          <a href="#examples">Examples</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#blueprint">Free Plan</a>
+          <a href="about.html">About Us</a>
+          <a href="blueprint.html">Free Plan</a>
         </div>
         <div class="footer-col">
           <h5>Get Started</h5>
-          <a href="#blueprint">Free Automation Plan</a>
-          <a href="#automations">Browse Automations</a>
+          <a href="blueprint.html">Free Automation Plan</a>
+          <a href="automations.html">Browse Automations</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -666,7 +254,6 @@
     </div>
   </footer>
 
-  <!-- ========== SCRIPTS ========== -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
