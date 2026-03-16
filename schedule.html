@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule a Call | Work Source Supply</title>
+  <meta name="description" content="Book a free 15-minute call with our team. Pick a time that works for you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="noise"></div>
+
+  <nav id="nav" class="glass-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="automations.html" class="nav-link">Automations</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="examples.html" class="nav-link">Examples</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="shop.html" class="nav-link nav-link--cta magnetic-btn"><span class="btn-text" data-text="Shop Now">Shop Now</span></a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="container text-center">
+      <div class="section-label reveal-up">Book a Call</div>
+      <h1 class="section-heading reveal-up" style="font-size:clamp(1.6rem,4.5vw,2.8rem)">Let's Talk About<br><span class="accent-text">Your Business.</span></h1>
+      <p class="section-sub centered reveal-up">Pick a date and time that works for you. Free 15-minute consultation — no pressure, no commitment.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:860px">
+      <div class="schedule-grid">
+
+        <!-- CALENDAR -->
+        <div class="calendar-card glass reveal-up">
+          <div class="calendar-header">
+            <h3 id="calendarMonth"></h3>
+            <div class="calendar-nav">
+              <button id="calPrev" aria-label="Previous month">&#8249;</button>
+              <button id="calNext" aria-label="Next month">&#8250;</button>
+            </div>
+          </div>
+          <div class="calendar-weekdays">
+            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+          </div>
+          <div class="calendar-days" id="calendarDays"></div>
+          <div class="timeslots" id="timeslots" style="display:none">
+            <h4>Available Times <span id="selectedDateText" style="color:var(--accent-blue)"></span></h4>
+            <div class="timeslot-grid" id="timeslotGrid"></div>
+          </div>
+        </div>
+
+        <!-- BOOKING FORM -->
+        <div class="form-card glass reveal-up">
+          <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:.35rem">Your Details</h3>
+          <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">Fill out your info and we'll confirm your call via email.</p>
+          <form id="scheduleForm">
+            <div class="form-group">
+              <label for="sch-name">Your Name</label>
+              <input type="text" id="sch-name" name="name" placeholder="John Smith" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="sch-email">Email</label>
+              <input type="email" id="sch-email" name="email" placeholder="john@company.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="sch-phone">Phone</label>
+              <input type="tel" id="sch-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="sch-business">What does your business do?</label>
+              <input type="text" id="sch-business" name="business" placeholder="E.g., residential plumbing company">
+            </div>
+            <div class="form-group">
+              <label for="sch-topic">What would you like to discuss?</label>
+              <select id="sch-topic" name="topic">
+                <option value="" disabled selected>Select a topic</option>
+                <option value="new-website">I need a new website</option>
+                <option value="automations">I want to automate my business</option>
+                <option value="full-system">I need a full business system</option>
+                <option value="pricing">I have questions about pricing</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div id="selectedSlotDisplay" style="display:none;padding:.75rem 1rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:var(--radius-xs);margin-bottom:1.25rem;font-size:.85rem">
+              <strong>Selected:</strong> <span id="slotSummary"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Confirm Booking &rarr;</button>
+            <p class="form-disclaimer">We'll send a confirmation to your email. <br>&#128274; No spam — only booking communications.</p>
+          </form>
+          <div id="scheduleSuccess" style="display:none;text-align:center;padding:2rem 0">
+            <div class="success-icon">&#10003;</div>
+            <h3 style="font-family:var(--font-heading);font-size:1.1rem;margin-bottom:.5rem">Call Booked!</h3>
+            <p style="font-size:.88rem;color:var(--text-dim);margin-bottom:.5rem">Check your email for a confirmation with call details.</p>
+            <p style="font-size:.82rem;color:var(--text-dim)">We'll call you at your scheduled time. Talk soon!</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVE CTA -->
+  <section class="section" style="padding-top:0">
+    <div class="container text-center" style="max-width:560px">
+      <div class="glass reveal-up" style="padding:2rem 1.5rem">
+        <h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:.35rem">Prefer to email us?</h3>
+        <p style="font-size:.85rem;color:var(--text-dim);margin-bottom:1rem">No problem. Send us a message and we'll get back within 24 hours.</p>
+        <a href="mailto:support@worksource.supplys" class="btn btn-outline" style="font-size:.85rem">support@worksource.supplys</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span><p class="footer-tagline">We turn your business into an automated system.</p></div>
+        <div class="footer-col"><h5>Explore</h5><a href="automations.html">Automations</a><a href="industries.html">Industries</a><a href="pricing.html">Pricing</a><a href="examples.html">Examples</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="schedule.html">Book a Call</a></div>
+        <div class="footer-col"><h5>Get Started</h5><a href="shop.html">Shop Plans</a><a href="schedule.html">Schedule a Call</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Work Source Supply. All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

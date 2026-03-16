@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started | Work Source Supply</title>
+  <meta name="description" content="Tell us about your business and we'll build exactly what you need. Simple guided form — takes 3 minutes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+  <div class="noise"></div>
+
+  <nav id="nav" class="glass-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="automations.html" class="nav-link">Automations</a>
+        <a href="industries.html" class="nav-link">Industries</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="examples.html" class="nav-link">Examples</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="shop.html" class="nav-link nav-link--cta magnetic-btn"><span class="btn-text" data-text="Shop Now">Shop Now</span></a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="hero-inner">
+    <div class="container text-center">
+      <div class="section-label reveal-up">Let's Build Your System</div>
+      <h1 class="section-heading reveal-up" style="font-size:clamp(1.6rem,4.5vw,2.8rem)">Tell Us About Your Business.<br><span class="accent-text">We'll Handle the Rest.</span></h1>
+      <p class="section-sub centered reveal-up">This takes about 3 minutes. The more you share, the better we can build for you.</p>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:720px">
+
+      <!-- PROGRESS STEPS -->
+      <div class="intake-progress reveal-up" id="intakeProgress">
+        <div class="intake-step active" data-step="1"><span class="intake-step-num">1</span> Your Business</div>
+        <div class="intake-step" data-step="2"><span class="intake-step-num">2</span> What You Need</div>
+        <div class="intake-step" data-step="3"><span class="intake-step-num">3</span> Details</div>
+        <div class="intake-step" data-step="4"><span class="intake-step-num">4</span> Contact</div>
+      </div>
+
+      <div class="form-card glass reveal-up">
+        <form id="intakeForm">
+
+          <!-- STEP 1: Business Type -->
+          <div class="intake-panel active" id="step1">
+            <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">What type of business do you run?</h3>
+            <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">Pick the closest match — we'll customize everything from there.</p>
+            <div class="intake-options" id="businessOptions">
+              <div class="intake-option" data-value="restaurant"><div class="intake-option-icon">&#127869;</div><div class="intake-option-label">Restaurant</div></div>
+              <div class="intake-option" data-value="contractor"><div class="intake-option-icon">&#128296;</div><div class="intake-option-label">Contractor</div></div>
+              <div class="intake-option" data-value="realestate"><div class="intake-option-icon">&#127968;</div><div class="intake-option-label">Real Estate</div></div>
+              <div class="intake-option" data-value="law"><div class="intake-option-icon">&#9878;</div><div class="intake-option-label">Law Firm</div></div>
+              <div class="intake-option" data-value="medical"><div class="intake-option-icon">&#129657;</div><div class="intake-option-label">Medical</div></div>
+              <div class="intake-option" data-value="ecommerce"><div class="intake-option-icon">&#128722;</div><div class="intake-option-label">E-Commerce</div></div>
+              <div class="intake-option" data-value="agency"><div class="intake-option-icon">&#128200;</div><div class="intake-option-label">Agency</div></div>
+              <div class="intake-option" data-value="photographer"><div class="intake-option-icon">&#128247;</div><div class="intake-option-label">Photography</div></div>
+              <div class="intake-option" data-value="coach"><div class="intake-option-icon">&#127942;</div><div class="intake-option-label">Coach / Trainer</div></div>
+              <div class="intake-option" data-value="homeservice"><div class="intake-option-icon">&#128295;</div><div class="intake-option-label">Home Service</div></div>
+              <div class="intake-option" data-value="consultant"><div class="intake-option-icon">&#128188;</div><div class="intake-option-label">Consultant</div></div>
+              <div class="intake-option" data-value="construction"><div class="intake-option-icon">&#128679;</div><div class="intake-option-label">Construction</div></div>
+              <div class="intake-option" data-value="insurance"><div class="intake-option-icon">&#128220;</div><div class="intake-option-label">Insurance</div></div>
+              <div class="intake-option" data-value="events"><div class="intake-option-icon">&#127881;</div><div class="intake-option-label">Events</div></div>
+              <div class="intake-option" data-value="salon"><div class="intake-option-icon">&#128135;</div><div class="intake-option-label">Salon / Spa</div></div>
+              <div class="intake-option" data-value="fitness"><div class="intake-option-icon">&#127947;</div><div class="intake-option-label">Fitness / Gym</div></div>
+              <div class="intake-option" data-value="auto"><div class="intake-option-icon">&#128663;</div><div class="intake-option-label">Auto Shop</div></div>
+              <div class="intake-option" data-value="accounting"><div class="intake-option-icon">&#128202;</div><div class="intake-option-label">Accounting</div></div>
+              <div class="intake-option" data-value="nonprofit"><div class="intake-option-icon">&#128156;</div><div class="intake-option-label">Non-Profit</div></div>
+              <div class="intake-option" data-value="other"><div class="intake-option-icon">&#10024;</div><div class="intake-option-label">Other</div></div>
+            </div>
+            <div class="intake-nav"><div></div><button type="button" class="btn btn-primary intake-next" data-next="2">Next &rarr;</button></div>
+          </div>
+
+          <!-- STEP 2: What They Need -->
+          <div class="intake-panel" id="step2">
+            <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">What do you need built?</h3>
+            <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">Select everything that interests you. Don't worry — we'll explain every option.</p>
+            <div class="intake-options" id="needsOptions">
+              <div class="intake-option" data-value="website"><div class="intake-option-icon">&#127760;</div><div class="intake-option-label">Website</div><div class="intake-option-desc">Professional site for your brand</div></div>
+              <div class="intake-option" data-value="booking"><div class="intake-option-icon">&#128197;</div><div class="intake-option-label">Booking System</div><div class="intake-option-desc">Let clients schedule online</div></div>
+              <div class="intake-option" data-value="crm"><div class="intake-option-icon">&#128101;</div><div class="intake-option-label">CRM</div><div class="intake-option-desc">Track leads &amp; clients</div></div>
+              <div class="intake-option" data-value="email"><div class="intake-option-icon">&#9993;</div><div class="intake-option-label">Email Automation</div><div class="intake-option-desc">Auto follow-ups &amp; campaigns</div></div>
+              <div class="intake-option" data-value="ai-phone"><div class="intake-option-icon">&#128222;</div><div class="intake-option-label">AI Phone Agent</div><div class="intake-option-desc">Answer calls 24/7</div></div>
+              <div class="intake-option" data-value="ai-chat"><div class="intake-option-icon">&#129302;</div><div class="intake-option-label">AI Chatbot</div><div class="intake-option-desc">Live chat on your site</div></div>
+              <div class="intake-option" data-value="invoicing"><div class="intake-option-icon">&#128179;</div><div class="intake-option-label">Invoicing</div><div class="intake-option-desc">Auto invoice &amp; collect payments</div></div>
+              <div class="intake-option" data-value="dashboard"><div class="intake-option-icon">&#128202;</div><div class="intake-option-label">Dashboard</div><div class="intake-option-desc">See your business at a glance</div></div>
+              <div class="intake-option" data-value="documents"><div class="intake-option-icon">&#128196;</div><div class="intake-option-label">Documents</div><div class="intake-option-desc">Auto-generate proposals &amp; contracts</div></div>
+              <div class="intake-option" data-value="app"><div class="intake-option-icon">&#128241;</div><div class="intake-option-label">Custom App</div><div class="intake-option-desc">Mobile or web application</div></div>
+              <div class="intake-option" data-value="marketing"><div class="intake-option-icon">&#128227;</div><div class="intake-option-label">Marketing</div><div class="intake-option-desc">Social, ads &amp; lead gen</div></div>
+              <div class="intake-option" data-value="not-sure"><div class="intake-option-icon">&#129300;</div><div class="intake-option-label">Not Sure Yet</div><div class="intake-option-desc">We'll help figure it out</div></div>
+            </div>
+            <div class="intake-nav"><button type="button" class="btn btn-outline intake-prev" data-prev="1">&larr; Back</button><button type="button" class="btn btn-primary intake-next" data-next="3">Next &rarr;</button></div>
+          </div>
+
+          <!-- STEP 3: Details -->
+          <div class="intake-panel" id="step3">
+            <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">Help us understand your business</h3>
+            <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">The more detail you share, the better we can tailor your system. No wrong answers here.</p>
+            <div class="form-group">
+              <label for="intake-describe">Describe your business in a sentence or two</label>
+              <textarea id="intake-describe" name="description" rows="3" placeholder="E.g., I run a landscaping company with 5 crews. We do residential and commercial work across the metro area."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="intake-pain">What's your biggest pain point right now?</label>
+              <textarea id="intake-pain" name="painPoint" rows="3" placeholder="E.g., I spend hours every day on the phone scheduling jobs and sending quotes. It's killing my time."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="intake-software">What tools/software do you currently use?</label>
+              <input type="text" id="intake-software" name="currentTools" placeholder="E.g., Google Sheets, QuickBooks, pen and paper...">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="intake-team">Team size</label>
+                <select id="intake-team" name="teamSize">
+                  <option value="" disabled selected>Select</option>
+                  <option value="just-me">Just me</option>
+                  <option value="2-5">2-5 people</option>
+                  <option value="6-15">6-15 people</option>
+                  <option value="16-50">16-50 people</option>
+                  <option value="50+">50+ people</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="intake-budget">Budget range</label>
+                <select id="intake-budget" name="budget">
+                  <option value="" disabled selected>Select</option>
+                  <option value="starter">Starter ($99 + $29.99/mo)</option>
+                  <option value="business">Business ($1,499 + $99/mo)</option>
+                  <option value="enterprise">Enterprise (Custom)</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="intake-upload">Have files to share? (menus, brochures, logos, etc.)</label>
+              <input type="text" id="intake-upload" name="files" placeholder="Paste a Google Drive, Dropbox, or any link here">
+              <p style="font-size:.68rem;color:var(--text-muted);margin-top:.3rem">Tip: Upload your files to Google Drive and paste the share link here. We'll review everything.</p>
+            </div>
+            <div class="intake-nav"><button type="button" class="btn btn-outline intake-prev" data-prev="2">&larr; Back</button><button type="button" class="btn btn-primary intake-next" data-next="4">Almost Done &rarr;</button></div>
+          </div>
+
+          <!-- STEP 4: Contact Info -->
+          <div class="intake-panel" id="step4">
+            <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">How can we reach you?</h3>
+            <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">We'll review your info and reach out within 24 hours with a personalized plan.</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="intake-name">Your Name</label>
+                <input type="text" id="intake-name" name="name" placeholder="John Smith" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="intake-biz">Business Name</label>
+                <input type="text" id="intake-biz" name="businessName" placeholder="Smith's Landscaping">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="intake-email">Email</label>
+              <input type="email" id="intake-email" name="email" placeholder="john@company.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="intake-phone">Phone (optional)</label>
+              <input type="tel" id="intake-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="intake-prefer">Preferred contact method</label>
+              <select id="intake-prefer" name="contactMethod">
+                <option value="email">Email</option>
+                <option value="phone">Phone Call</option>
+                <option value="text">Text Message</option>
+              </select>
+            </div>
+            <div class="intake-nav">
+              <button type="button" class="btn btn-outline intake-prev" data-prev="3">&larr; Back</button>
+              <button type="submit" class="btn btn-primary btn-lg">Submit &rarr;</button>
+            </div>
+            <p class="form-disclaimer" style="margin-top:1rem">&#128274; Your information is secure. We only use it to build your project — no spam, ever.</p>
+          </div>
+
+        </form>
+
+        <!-- SUCCESS -->
+        <div id="intakeSuccess" style="display:none;text-align:center;padding:3rem 1rem">
+          <div class="success-icon">&#10003;</div>
+          <h3 style="font-family:var(--font-heading);font-size:1.2rem;margin-bottom:.5rem">You're All Set!</h3>
+          <p style="font-size:.92rem;color:var(--text-dim);margin-bottom:1.5rem">We're reviewing your info and will reach out within 24 hours with a personalized plan.</p>
+          <div style="display:flex;flex-direction:column;gap:.75rem;align-items:center">
+            <a href="schedule.html" class="btn btn-primary">Book a Call Now &rarr;</a>
+            <a href="examples.html" class="btn btn-outline">Browse Examples While You Wait</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><span class="logo-mark">WSS</span><span class="logo-text">Work Source Supply</span><p class="footer-tagline">We turn your business into an automated system.</p></div>
+        <div class="footer-col"><h5>Explore</h5><a href="automations.html">Automations</a><a href="industries.html">Industries</a><a href="pricing.html">Pricing</a><a href="examples.html">Examples</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="about.html">About Us</a><a href="schedule.html">Book a Call</a></div>
+        <div class="footer-col"><h5>Get Started</h5><a href="shop.html">Shop Plans</a><a href="schedule.html">Schedule a Call</a></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 Work Source Supply. All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
