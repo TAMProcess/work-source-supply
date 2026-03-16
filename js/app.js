@@ -141,7 +141,10 @@
     var cur = document.getElementById('cursor');
     if(cur){
       var cx=0,cy=0;
-      document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;});
+      document.addEventListener('mousemove',function(e){
+        cx=e.clientX;cy=e.clientY;
+        cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';
+      });
 
       /* --- trail shapes --- */
       var trailCount = 30;
@@ -178,7 +181,6 @@
 
       (function moveCur(){
         requestAnimationFrame(moveCur);
-        cur.style.transform='translate3d('+cx+'px,'+cy+'px,0)';
         for(var i=0;i<trails.length;i++){
           var tr=trails[i];
           tr.x+=(cx-tr.x)*tr.lag;
