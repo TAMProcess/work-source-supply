@@ -366,7 +366,7 @@ button{cursor:pointer}
 }
 
 /* ---------- PRICING PROMO ---------- */
-.pricing-original{text-decoration:line-through;color:var(--text-muted);font-size:1.2rem;font-weight:400;margin-right:.35rem}
+.pricing-original{text-decoration:line-through;color:var(--text-muted);-webkit-text-fill-color:var(--text-muted);background:none;font-size:1.2rem;font-weight:400;margin-right:.35rem}
 .pricing-promo-tag{display:inline-block;padding:.2rem .65rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;background:linear-gradient(135deg,var(--accent-green),#00d4aa);color:#050510;border-radius:100px;margin-bottom:.4rem}
 
 /* ---------- SITE PREVIEWS (homepage carousel) ---------- */
