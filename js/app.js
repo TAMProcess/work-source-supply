@@ -95,39 +95,34 @@
       var scene = new THREE.Scene();
       var camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, .1, 200);
       camera.position.z = 50;
-      var renderer = new THREE.WebGLRenderer({canvas:bgCanvas, alpha:true, antialias:true});
+      var renderer = new THREE.WebGLRenderer({canvas:bgCanvas, alpha:true, antialias:false});
       renderer.setSize(innerWidth, innerHeight);
-      renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+      renderer.setPixelRatio(1);
 
-      var pCount = 500;
+      var pCount = 180;
       var positions = new Float32Array(pCount*3);
       for(var i=0;i<pCount*3;i++) positions[i]=(Math.random()-.5)*100;
       var pGeo = new THREE.BufferGeometry();
       pGeo.setAttribute('position', new THREE.BufferAttribute(positions,3));
-      var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({color:0x7b2fff, size:.1, transparent:true, opacity:.45}));
+      var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({color:0x7b2fff, size:.12, transparent:true, opacity:.45}));
       scene.add(particles);
 
       var shapes = [];
       var geos = [new THREE.OctahedronGeometry(.5,0), new THREE.TetrahedronGeometry(.5,0), new THREE.IcosahedronGeometry(.4,0)];
-      for(var j=0;j<5;j++){
+      for(var j=0;j<3;j++){
         var m = new THREE.Mesh(geos[j%geos.length], new THREE.MeshBasicMaterial({color:j%2?0x7b2fff:0x00d4ff, wireframe:true, transparent:true, opacity:.15}));
         m.position.set((Math.random()-.5)*60,(Math.random()-.5)*40,(Math.random()-.5)*30);
         m.userData={rx:(Math.random()-.5)*.008,ry:(Math.random()-.5)*.008,fs:Math.random()*.3+.1,fa:Math.random()*2+1,by:m.position.y};
         scene.add(m); shapes.push(m);
       }
 
-      var mx=0,my=0;
-      document.addEventListener('mousemove',function(e){mx=(e.clientX/innerWidth-.5)*2;my=(e.clientY/innerHeight-.5)*2;});
-
       var lastBg=0;
       (function animBg(now){
         requestAnimationFrame(animBg);
-        if(now-lastBg<33) return; // cap at ~30fps — ambient bg doesn't need 60
+        if(now-lastBg<50) return; // cap at ~20fps — subtle ambient bg
         lastBg=now;
         var t=Date.now()*.001;
-        particles.rotation.y+=.0004;particles.rotation.x+=.0002;
-        camera.position.x+=(mx*3-camera.position.x)*.02;
-        camera.position.y+=(-my*3-camera.position.y)*.02;
+        particles.rotation.y+=.0006;particles.rotation.x+=.0003;
         shapes.forEach(function(s){s.rotation.x+=s.userData.rx;s.rotation.y+=s.userData.ry;s.position.y=s.userData.by+Math.sin(t*s.userData.fs)*s.userData.fa;});
         renderer.render(scene,camera);
       })(0);
