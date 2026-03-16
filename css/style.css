@@ -375,13 +375,129 @@ button{cursor:pointer}
 .preview-browser-bar{height:18px;background:rgba(255,255,255,.04);display:flex;align-items:center;gap:4px;padding:0 8px}
 .preview-browser-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15)}
 .preview-site{height:calc(100% - 18px);overflow:hidden;position:relative}
-.preview-site-content{padding:12px;font-size:6px;color:var(--text-dim)}
-.preview-site-hero{height:40%;background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple));border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.preview-site-hero-text{font-family:var(--font-heading);font-size:8px;font-weight:700;color:#fff;text-align:center;line-height:1.3;padding:4px}
-.preview-site-nav{height:8px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:6px}
-.preview-site-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
-.preview-site-block{height:24px;background:rgba(255,255,255,.04);border-radius:3px}
-.preview-site-cta{height:10px;width:50%;margin:6px auto 0;background:linear-gradient(90deg,var(--accent-blue),var(--accent-purple));border-radius:3px}
+.preview-site-content{padding:8px;font-size:6px;color:var(--text-dim)}
+/* Shared mini elements */
+.pv-hero{border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pv-hero-text{font-family:var(--font-heading);font-size:8px;font-weight:700;color:#fff;text-align:center;line-height:1.3;padding:4px}
+.pv-nav{height:7px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:5px;display:flex;align-items:center;gap:3px;padding:0 4px}
+.pv-nav-dot{width:8px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
+.pv-nav-dot.active{background:rgba(255,255,255,.3)}
+.pv-block{background:rgba(255,255,255,.04);border-radius:3px}
+.pv-btn{height:8px;border-radius:3px;margin:4px auto 0}
+.pv-text{height:3px;border-radius:1px;background:rgba(255,255,255,.08);margin-bottom:3px}
+.pv-text.short{width:60%}
+.pv-text.med{width:80%}
+.pv-icon{font-size:7px;line-height:1;text-align:center}
+.pv-badge{display:inline-block;padding:1px 4px;font-size:4px;border-radius:2px;font-weight:700;letter-spacing:.3px;text-transform:uppercase}
+.pv-stars{font-size:4px;color:#ffc107;letter-spacing:1px}
+.pv-divider{height:1px;background:rgba(255,255,255,.06);margin:4px 0}
+/* Restaurant: menu grid + order btn */
+.pv-menu-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin:4px 0}
+.pv-menu-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:3px;text-align:center}
+.pv-menu-img{width:100%;aspect-ratio:1;border-radius:2px;margin-bottom:2px}
+.pv-menu-name{font-size:4.5px;font-weight:600;color:rgba(255,255,255,.6)}
+.pv-menu-price{font-size:4px;color:rgba(255,255,255,.35);margin-top:1px}
+.pv-order-bar{display:flex;align-items:center;justify-content:space-between;padding:3px 4px;background:rgba(255,255,255,.03);border-radius:3px;margin-top:3px}
+.pv-order-bar span{font-size:4px;color:rgba(255,255,255,.4)}
+/* Contractor: project gallery + stats */
+.pv-project-gallery{display:grid;grid-template-columns:1.5fr 1fr;gap:3px;margin:4px 0}
+.pv-project-main{aspect-ratio:4/3;border-radius:3px;position:relative}
+.pv-project-stack{display:flex;flex-direction:column;gap:3px}
+.pv-project-thumb{flex:1;border-radius:3px}
+.pv-stats-row{display:flex;gap:3px;margin:4px 0}
+.pv-stat-box{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:3px;text-align:center}
+.pv-stat-num{font-family:var(--font-heading);font-size:7px;font-weight:800;display:block;line-height:1.2}
+.pv-stat-lbl{font-size:3.5px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.3px}
+/* Real Estate: property cards */
+.pv-listings{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin:4px 0}
+.pv-listing{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.pv-listing-img{width:100%;aspect-ratio:16/9;position:relative}
+.pv-listing-body{padding:3px}
+.pv-listing-price{font-family:var(--font-heading);font-size:5px;font-weight:700;color:rgba(255,255,255,.7)}
+.pv-listing-addr{font-size:3.5px;color:rgba(255,255,255,.3);margin-top:1px}
+.pv-listing-tags{display:flex;gap:2px;margin-top:2px}
+.pv-listing-tag{font-size:3px;padding:1px 3px;border-radius:2px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.35)}
+/* Law: split layout with sidebar */
+.pv-split{display:grid;grid-template-columns:1fr 2fr;gap:4px;height:100%}
+.pv-sidebar{display:flex;flex-direction:column;gap:3px}
+.pv-sidebar-item{padding:3px 4px;border-radius:3px;font-size:4px;color:rgba(255,255,255,.4);background:rgba(255,255,255,.02);border-left:2px solid transparent;transition:all .2s}
+.pv-sidebar-item.active{border-left-color:#e2b04a;background:rgba(226,176,74,.06);color:rgba(255,255,255,.7)}
+.pv-main-content{display:flex;flex-direction:column;gap:3px}
+.pv-testimonial{background:rgba(255,255,255,.02);border-radius:3px;padding:4px;border-left:2px solid rgba(255,255,255,.1);font-size:4px;color:rgba(255,255,255,.3);font-style:italic;line-height:1.4}
+/* Salon: booking slots + services */
+.pv-services-row{display:flex;gap:3px;margin:4px 0;overflow:hidden}
+.pv-service-pill{flex-shrink:0;padding:2px 6px;border-radius:10px;font-size:4px;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.4);white-space:nowrap}
+.pv-service-pill.active{border-color:rgba(233,105,137,.4);color:rgba(233,105,137,.9);background:rgba(233,105,137,.08)}
+.pv-booking-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:3px 0}
+.pv-time-slot{padding:2px;text-align:center;font-size:3.5px;border-radius:2px;border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
+.pv-time-slot.booked{background:rgba(255,255,255,.03);color:rgba(255,255,255,.15);text-decoration:line-through}
+.pv-time-slot.open{border-color:rgba(233,105,137,.3);color:rgba(233,105,137,.8)}
+.pv-stylist-row{display:flex;gap:4px;margin:4px 0}
+.pv-stylist{text-align:center}
+.pv-stylist-avatar{width:14px;height:14px;border-radius:50%;margin:0 auto 2px}
+.pv-stylist-name{font-size:3.5px;color:rgba(255,255,255,.4)}
+/* Medical: dashboard feel */
+.pv-dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.pv-dash-header span{font-size:5px;font-weight:600;color:rgba(255,255,255,.5)}
+.pv-dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:4px}
+.pv-dash-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:3px;text-align:center}
+.pv-dash-card-icon{font-size:6px;margin-bottom:1px}
+.pv-dash-card-num{font-family:var(--font-heading);font-size:6px;font-weight:700;display:block;line-height:1.3}
+.pv-dash-card-lbl{font-size:3px;color:rgba(255,255,255,.3)}
+.pv-appt-list{display:flex;flex-direction:column;gap:2px}
+.pv-appt{display:flex;align-items:center;gap:4px;padding:2px 3px;border-radius:2px;background:rgba(255,255,255,.02);font-size:3.5px;color:rgba(255,255,255,.35)}
+.pv-appt-dot{width:4px;height:4px;border-radius:50%;flex-shrink:0}
+.pv-appt-time{margin-left:auto;font-size:3px;color:rgba(255,255,255,.25)}
+/* E-Commerce: product grid + cart */
+.pv-products{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:4px 0}
+.pv-product{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
+.pv-product-img{width:100%;aspect-ratio:1;position:relative}
+.pv-product-body{padding:2px 3px 3px}
+.pv-product-name{font-size:4px;font-weight:600;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pv-product-price{font-size:4.5px;font-weight:700;margin-top:1px}
+.pv-product-old{text-decoration:line-through;color:rgba(255,255,255,.2);font-size:3.5px;margin-left:2px;font-weight:400}
+.pv-cart-bar{display:flex;align-items:center;justify-content:space-between;padding:3px 5px;border-radius:3px;margin-top:3px}
+.pv-cart-bar span{font-size:4px;color:rgba(255,255,255,.4)}
+/* Fitness: schedule + metrics */
+.pv-schedule{display:flex;flex-direction:column;gap:2px;margin:3px 0}
+.pv-class{display:flex;align-items:center;gap:3px;padding:3px 4px;border-radius:3px;background:rgba(255,255,255,.02);border-left:3px solid transparent}
+.pv-class-time{font-size:4px;font-weight:700;color:rgba(255,255,255,.3);width:20px;flex-shrink:0}
+.pv-class-name{font-size:4px;font-weight:600;color:rgba(255,255,255,.5);flex:1}
+.pv-class-spots{font-size:3.5px;padding:1px 4px;border-radius:8px;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.3)}
+.pv-class-spots.hot{border-color:rgba(255,0,110,.3);color:rgba(255,0,110,.7)}
+.pv-progress-row{display:flex;gap:3px;margin:4px 0}
+.pv-progress-item{flex:1;text-align:center}
+.pv-progress-ring{width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.06);margin:0 auto 2px;position:relative}
+.pv-progress-ring::after{content:'';position:absolute;inset:2px;border-radius:50%;border:1.5px solid transparent;border-top-color:currentColor}
+.pv-progress-lbl{font-size:3px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.2px}
+/* Photography: gallery grid */
+.pv-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;margin:3px 0}
+.pv-gallery-item{border-radius:2px;position:relative;overflow:hidden}
+.pv-gallery-item.span2{grid-column:span 2}
+.pv-gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;font-size:4px;color:#fff;font-weight:600;opacity:0;transition:opacity .2s}
+/* Insurance: comparison table */
+.pv-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:4px 0}
+.pv-plan{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:3px;padding:3px;text-align:center}
+.pv-plan.featured{border-color:rgba(0,212,255,.3);background:rgba(0,212,255,.04)}
+.pv-plan-name{font-size:4px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:2px}
+.pv-plan-price{font-family:var(--font-heading);font-size:7px;font-weight:800;display:block;line-height:1.2;margin-bottom:2px}
+.pv-plan-feat{font-size:3px;color:rgba(255,255,255,.25);line-height:1.6}
+/* Auto: service list */
+.pv-service-list{display:flex;flex-direction:column;gap:2px;margin:3px 0}
+.pv-service-item{display:flex;align-items:center;gap:3px;padding:3px 4px;border-radius:3px;background:rgba(255,255,255,.02)}
+.pv-service-icon{width:10px;height:10px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5px;flex-shrink:0}
+.pv-service-info{flex:1}
+.pv-service-title{font-size:4px;font-weight:600;color:rgba(255,255,255,.5)}
+.pv-service-desc{font-size:3px;color:rgba(255,255,255,.2)}
+.pv-service-price{font-size:4.5px;font-weight:700;flex-shrink:0}
+/* Consulting: case study / KPI */
+.pv-kpi-row{display:flex;gap:3px;margin:3px 0}
+.pv-kpi{flex:1;text-align:center;padding:3px;background:rgba(255,255,255,.03);border-radius:3px;border-top:2px solid transparent}
+.pv-kpi-val{font-family:var(--font-heading);font-size:8px;font-weight:800;display:block;line-height:1.2}
+.pv-kpi-lbl{font-size:3px;color:rgba(255,255,255,.3);text-transform:uppercase}
+.pv-case-study{background:rgba(255,255,255,.02);border-radius:3px;padding:4px;margin:3px 0}
+.pv-case-title{font-size:4.5px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:2px}
+.pv-case-result{font-size:3.5px;color:rgba(255,255,255,.3);line-height:1.5}
 .preview-meta{padding:.75rem 1rem}
 .preview-meta h4{font-family:var(--font-heading);font-size:.82rem;font-weight:600;margin-bottom:.15rem}
 .preview-meta span{font-size:.7rem;color:var(--text-dim)}
