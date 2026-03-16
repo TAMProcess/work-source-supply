@@ -156,47 +156,41 @@
       var colors = ['#00d4ff','#7b2fff','#ff006e','#00ffaa'];
       var trails = [];
       for(var ti=0;ti<trailCount;ti++){
-        var t = ti/trailCount; // 0..1 normalized position in trail
-        // Sizes: small near cursor, grow toward tail end (3-20px range)
-        var size = 3 + t*17 + Math.random()*4;
+        var t = ti/trailCount;
+        // Small shapes: 3-10px, mixed sizes for particle cloud feel
+        var size = 3 + Math.random()*7;
         var el = document.createElement('div');
         el.className = 'cursor-trail';
         el.style.width = size+'px';
         el.style.height = size+'px';
         var c = colors[ti%colors.length];
-        var baseOp = 0.5 + Math.random()*0.35;
+        var baseOp = 0.45 + Math.random()*0.4;
         el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="2">'+svgShapes[ti%svgShapes.length]+'</svg>';
         document.body.appendChild(el);
-        // Longer tail: lag decreases with index so back shapes trail much further
-        var lagVal = 0.12 - t*0.105; // front: 0.12 (fast follow), back: ~0.015 (long trail)
-        var side = (ti%2===0) ? -1 : 1;
-        trails.push({el:el, x:0, y:0, lag:Math.max(lagVal,0.008), rot:Math.random()*360, rx:Math.random()*360, ry:Math.random()*360,
-          rs:(Math.random()-.5)*1.2, rxs:(Math.random()-.5)*0.8, rys:(Math.random()-.5)*0.6,
-          baseOp:baseOp, side:side, spread:t, size:size});
+        // Tight cloud: all shapes follow fairly close, slight variation in lag
+        var lagVal = 0.08 + Math.random()*0.10;
+        // Random offset for cloud scatter instead of strict V
+        var angle = Math.random()*Math.PI*2;
+        var scatter = Math.random();
+        trails.push({el:el, x:0, y:0, lag:lagVal, rot:Math.random()*360, rx:Math.random()*360, ry:Math.random()*360,
+          rs:(Math.random()-.5)*1.5, rxs:(Math.random()-.5)*1.0, rys:(Math.random()-.5)*0.8,
+          baseOp:baseOp, angle:angle, scatter:scatter, size:size});
       }
 
-      var prevCx=0,prevCy=0;
       (function moveCur(){
         requestAnimationFrame(moveCur);
         cur.style.left=cx+'px';cur.style.top=cy+'px';
-        // Direction of movement for V-formation
-        var mdx=cx-prevCx,mdy=cy-prevCy;
-        var mLen=Math.sqrt(mdx*mdx+mdy*mdy)||1;
-        // Perpendicular vector for fanning out
-        var perpX=-mdy/mLen, perpY=mdx/mLen;
-        prevCx+=(cx-prevCx)*.1; prevCy+=(cy-prevCy)*.1;
         for(var i=0;i<trails.length;i++){
           var tr=trails[i];
-          // Base position follows cursor with lag
           tr.x+=(cx-tr.x)*tr.lag;
           tr.y+=(cy-tr.y)*tr.lag;
           tr.rot+=tr.rs; tr.rx+=tr.rxs; tr.ry+=tr.rys;
           var dx=cx-tr.x,dy=cy-tr.y,dist=Math.sqrt(dx*dx+dy*dy);
-          // V-formation offset: spread perpendicular to movement direction
-          var fanAmount = dist * 0.4 * tr.spread;
-          var ox = tr.x + perpX * fanAmount * tr.side;
-          var oy = tr.y + perpY * fanAmount * tr.side;
-          var op=Math.min(dist/60,1)*tr.baseOp;
+          // Particle cloud: scatter outward from trail position based on distance
+          var cloudRadius = dist*0.15*tr.scatter;
+          var ox = tr.x + Math.cos(tr.angle)*cloudRadius;
+          var oy = tr.y + Math.sin(tr.angle)*cloudRadius;
+          var op=Math.min(dist/40,1)*tr.baseOp;
           tr.el.style.left=ox+'px';
           tr.el.style.top=oy+'px';
           tr.el.style.opacity=op;
