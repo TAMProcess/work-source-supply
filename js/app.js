@@ -716,6 +716,17 @@
     if(intakeForm){
       intakeForm.addEventListener('submit', function(e){
         e.preventDefault();
+        // Inject selected options from step 1 & 2 into hidden fields
+        var bizSel = document.querySelectorAll('#step1 .intake-option.selected');
+        var bizVal = Array.prototype.map.call(bizSel, function(o){ return o.getAttribute('data-value'); }).join(', ');
+        var needsSel = document.querySelectorAll('#step2 .intake-option.selected');
+        var needsVal = Array.prototype.map.call(needsSel, function(o){ return o.getAttribute('data-value'); }).join(', ');
+        var h1 = intakeForm.querySelector('input[name="businessType"]');
+        if(!h1){ h1 = document.createElement('input'); h1.type='hidden'; h1.name='businessType'; intakeForm.appendChild(h1); }
+        h1.value = bizVal || 'Not selected';
+        var h2 = intakeForm.querySelector('input[name="needs"]');
+        if(!h2){ h2 = document.createElement('input'); h2.type='hidden'; h2.name='needs'; intakeForm.appendChild(h2); }
+        h2.value = needsVal || 'Not selected';
         sendForm(intakeForm, 'New Get Started Inquiry', function(){
           document.getElementById('intakeFlow').style.display = 'none';
           document.getElementById('intakeSuccess').style.display = 'block';
