@@ -119,15 +119,18 @@
       var mx=0,my=0;
       document.addEventListener('mousemove',function(e){mx=(e.clientX/innerWidth-.5)*2;my=(e.clientY/innerHeight-.5)*2;});
 
-      (function animBg(){
+      var lastBg=0;
+      (function animBg(now){
         requestAnimationFrame(animBg);
+        if(now-lastBg<33) return; // cap at ~30fps — ambient bg doesn't need 60
+        lastBg=now;
         var t=Date.now()*.001;
-        particles.rotation.y+=.0002;particles.rotation.x+=.0001;
+        particles.rotation.y+=.0004;particles.rotation.x+=.0002;
         camera.position.x+=(mx*3-camera.position.x)*.02;
         camera.position.y+=(-my*3-camera.position.y)*.02;
         shapes.forEach(function(s){s.rotation.x+=s.userData.rx;s.rotation.y+=s.userData.ry;s.position.y=s.userData.by+Math.sin(t*s.userData.fs)*s.userData.fa;});
         renderer.render(scene,camera);
-      })();
+      })(0);
 
       window.addEventListener('resize',function(){
         camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
