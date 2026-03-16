@@ -212,17 +212,23 @@
   if(nav) window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>50);},{passive:true});
 
   if(navToggle && navLinks){
-    navToggle.addEventListener('click',function(){
+    navToggle.addEventListener('click',function(e){
+      e.stopPropagation();
       navToggle.classList.toggle('open');
       navLinks.classList.toggle('open');
-      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
     });
     navLinks.querySelectorAll('.nav-link').forEach(function(l){
       l.addEventListener('click',function(){
         navToggle.classList.remove('open');
         navLinks.classList.remove('open');
-        document.body.style.overflow = '';
       });
+    });
+    /* Close menu when tapping outside */
+    document.addEventListener('click',function(e){
+      if(navLinks.classList.contains('open') && !navLinks.contains(e.target) && !navToggle.contains(e.target)){
+        navToggle.classList.remove('open');
+        navLinks.classList.remove('open');
+      }
     });
   }
 
