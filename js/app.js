@@ -355,7 +355,7 @@
       if(!isOpen){
         q.classList.add('open');
         a.classList.add('open');
-        a.style.maxHeight=a.scrollHeight+'px';
+        a.style.maxHeight=(a.scrollHeight+20)+'px';
       }
     });
   });
