@@ -144,7 +144,7 @@
       document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;});
 
       /* --- trail shapes --- */
-      var trailCount = 25;
+      var trailCount = 75;
       var svgShapes = [
         '<polygon points="12,2 22,22 2,22"/>',
         '<rect x="3" y="3" width="18" height="18" transform="rotate(45 12 12)"/>',
@@ -155,29 +155,24 @@
       ];
       var colors = ['#00d4ff','#7b2fff','#ff006e','#00ffaa'];
       var trails = [];
-      var third = Math.ceil(trailCount/3);
       for(var ti=0;ti<trailCount;ti++){
-        // Size tiers: first 1/3 smallest (75% decrease), next 1/3 medium (65%), last 1/3 largest (45%)
-        var baseSize = 10 + Math.random()*24;
-        if(ti<third) baseSize *= 0.25;        // 75% decrease
-        else if(ti<third*2) baseSize *= 0.35;  // 65% decrease
-        else baseSize *= 0.55;                 // 45% decrease
+        var t = ti/trailCount; // 0..1 normalized position in trail
+        // Sizes: small near cursor, grow toward tail end (3-20px range)
+        var size = 3 + t*17 + Math.random()*4;
         var el = document.createElement('div');
         el.className = 'cursor-trail';
-        el.style.width = Math.max(4,baseSize)+'px';
-        el.style.height = Math.max(4,baseSize)+'px';
+        el.style.width = size+'px';
+        el.style.height = size+'px';
         var c = colors[ti%colors.length];
-        var baseOp = 0.4 + Math.random()*0.3;
-        el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="1.5">'+svgShapes[ti%svgShapes.length]+'</svg>';
+        var baseOp = 0.5 + Math.random()*0.35;
+        el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="2">'+svgShapes[ti%svgShapes.length]+'</svg>';
         document.body.appendChild(el);
-        // Increasing lag = further behind = more spread
-        var lagVal = 0.06 + ti*0.013;
-        // V-formation: assign a side (-1 or 1) and a spread amount that grows with index
+        // Longer tail: lag decreases with index so back shapes trail much further
+        var lagVal = 0.12 - t*0.105; // front: 0.12 (fast follow), back: ~0.015 (long trail)
         var side = (ti%2===0) ? -1 : 1;
-        var spread = (ti/trailCount)*1.0; // 0..1 normalized depth
-        trails.push({el:el, x:0, y:0, lag:lagVal, rot:Math.random()*360, rx:Math.random()*360, ry:Math.random()*360,
+        trails.push({el:el, x:0, y:0, lag:Math.max(lagVal,0.008), rot:Math.random()*360, rx:Math.random()*360, ry:Math.random()*360,
           rs:(Math.random()-.5)*1.2, rxs:(Math.random()-.5)*0.8, rys:(Math.random()-.5)*0.6,
-          baseOp:baseOp, side:side, spread:spread, size:Math.max(4,baseSize)});
+          baseOp:baseOp, side:side, spread:t, size:size});
       }
 
       var prevCx=0,prevCy=0;
