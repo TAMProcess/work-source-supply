@@ -139,16 +139,51 @@
   /* ============ CURSOR (desktop only) ============ */
   if(!isMobile){
     var cur = document.getElementById('cursor');
-    var fol = document.getElementById('cursorFollower');
-    if(cur && fol){
-      var cx=0,cy=0,fx=0,fy=0;
+    if(cur){
+      var cx=0,cy=0;
       document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;});
+
+      /* --- trail shapes --- */
+      var trailCount = 25;
+      var svgShapes = [
+        '<polygon points="12,2 22,22 2,22"/>',
+        '<rect x="3" y="3" width="18" height="18" transform="rotate(45 12 12)"/>',
+        '<circle cx="12" cy="12" r="10"/>',
+        '<polygon points="12,2 15,9 22,9 16,14 18,22 12,17 6,22 8,14 2,9 9,9"/>',
+        '<polygon points="12,2 22,8 22,16 12,22 2,16 2,8"/>',
+        '<polygon points="12,2 20,7 20,17 12,22 4,17 4,7"/>'
+      ];
+      var colors = ['rgba(0,212,255,C)','rgba(123,47,255,C)','rgba(255,0,110,C)','rgba(0,255,170,C)'];
+      var trails = [];
+      for(var ti=0;ti<trailCount;ti++){
+        var size = 6 + Math.random()*28;
+        var el = document.createElement('div');
+        el.className = 'cursor-trail';
+        el.style.width = size+'px';
+        el.style.height = size+'px';
+        var c = colors[ti%colors.length].replace('C', (0.08 + Math.random()*0.14).toFixed(2));
+        el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="1">'+svgShapes[ti%svgShapes.length]+'</svg>';
+        document.body.appendChild(el);
+        trails.push({el:el, x:0, y:0, lag:.04+ti*.012, rot:Math.random()*360, rs:(Math.random()-.5)*1.2});
+      }
+
       (function moveCur(){
         requestAnimationFrame(moveCur);
-        fx+=(cx-fx)*.14;fy+=(cy-fy)*.14;
         cur.style.left=cx+'px';cur.style.top=cy+'px';
-        fol.style.left=fx+'px';fol.style.top=fy+'px';
+        for(var i=0;i<trails.length;i++){
+          var tr=trails[i];
+          tr.x+=(cx-tr.x)*tr.lag;
+          tr.y+=(cy-tr.y)*tr.lag;
+          tr.rot+=tr.rs;
+          var dx=cx-tr.x,dy=cy-tr.y,dist=Math.sqrt(dx*dx+dy*dy);
+          var op=Math.min(dist/120,1)*parseFloat(tr.el.querySelector('svg').getAttribute('stroke').match(/[\d.]+(?=\))/)[0]||.12)*4;
+          tr.el.style.left=tr.x+'px';
+          tr.el.style.top=tr.y+'px';
+          tr.el.style.opacity=op;
+          tr.el.style.transform='translate(-50%,-50%) rotate('+tr.rot+'deg)';
+        }
       })();
+
       var hoverSel='a,button,.industry-card,.industry-pill,.accordion-toggle,.btn,.nav-toggle,input,textarea,select,.search-result,.faq-q';
       document.addEventListener('mouseover',function(e){if(e.target.closest(hoverSel))document.body.classList.add('cursor-hover');});
       document.addEventListener('mouseout',function(e){if(e.target.closest(hoverSel))document.body.classList.remove('cursor-hover');});

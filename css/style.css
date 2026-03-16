@@ -57,14 +57,14 @@ button{cursor:pointer}
 #bg-canvas.visible{opacity:1}
 
 /* ---------- CURSOR (desktop only) ---------- */
-.cursor,.cursor-follower{display:none}
+.cursor{display:none}
 @media(hover:hover) and (pointer:fine){
   body{cursor:none}
   button,a,input,textarea,select{cursor:none}
   .cursor{display:block;position:fixed;width:8px;height:8px;border-radius:50%;background:var(--accent-blue);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
-  .cursor-follower{display:block;position:fixed;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.2);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
   body.cursor-hover .cursor{width:40px;height:40px;background:rgba(0,212,255,.12)}
-  body.cursor-hover .cursor-follower{width:48px;height:48px;border-color:var(--accent-blue)}
+  .cursor-trail{position:fixed;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);opacity:0;will-change:transform,opacity}
+  .cursor-trail svg{width:100%;height:100%;display:block}
 }
 
 /* ---------- NAV ---------- */
