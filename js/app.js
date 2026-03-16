@@ -155,33 +155,57 @@
       ];
       var colors = ['#00d4ff','#7b2fff','#ff006e','#00ffaa'];
       var trails = [];
+      var third = Math.ceil(trailCount/3);
       for(var ti=0;ti<trailCount;ti++){
-        var size = 6 + Math.random()*28;
+        // Size tiers: first 1/3 smallest (75% decrease), next 1/3 medium (65%), last 1/3 largest (45%)
+        var baseSize = 10 + Math.random()*24;
+        if(ti<third) baseSize *= 0.25;        // 75% decrease
+        else if(ti<third*2) baseSize *= 0.35;  // 65% decrease
+        else baseSize *= 0.55;                 // 45% decrease
         var el = document.createElement('div');
         el.className = 'cursor-trail';
-        el.style.width = size+'px';
-        el.style.height = size+'px';
+        el.style.width = Math.max(4,baseSize)+'px';
+        el.style.height = Math.max(4,baseSize)+'px';
         var c = colors[ti%colors.length];
-        var baseOp = 0.35 + Math.random()*0.35;
+        var baseOp = 0.4 + Math.random()*0.3;
         el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="'+c+'" stroke-width="1.5">'+svgShapes[ti%svgShapes.length]+'</svg>';
         document.body.appendChild(el);
-        trails.push({el:el, x:0, y:0, lag:.04+ti*.012, rot:Math.random()*360, rs:(Math.random()-.5)*1.2, baseOp:baseOp});
+        // Increasing lag = further behind = more spread
+        var lagVal = 0.06 + ti*0.013;
+        // V-formation: assign a side (-1 or 1) and a spread amount that grows with index
+        var side = (ti%2===0) ? -1 : 1;
+        var spread = (ti/trailCount)*1.0; // 0..1 normalized depth
+        trails.push({el:el, x:0, y:0, lag:lagVal, rot:Math.random()*360, rx:Math.random()*360, ry:Math.random()*360,
+          rs:(Math.random()-.5)*1.2, rxs:(Math.random()-.5)*0.8, rys:(Math.random()-.5)*0.6,
+          baseOp:baseOp, side:side, spread:spread, size:Math.max(4,baseSize)});
       }
 
+      var prevCx=0,prevCy=0;
       (function moveCur(){
         requestAnimationFrame(moveCur);
         cur.style.left=cx+'px';cur.style.top=cy+'px';
+        // Direction of movement for V-formation
+        var mdx=cx-prevCx,mdy=cy-prevCy;
+        var mLen=Math.sqrt(mdx*mdx+mdy*mdy)||1;
+        // Perpendicular vector for fanning out
+        var perpX=-mdy/mLen, perpY=mdx/mLen;
+        prevCx+=(cx-prevCx)*.1; prevCy+=(cy-prevCy)*.1;
         for(var i=0;i<trails.length;i++){
           var tr=trails[i];
+          // Base position follows cursor with lag
           tr.x+=(cx-tr.x)*tr.lag;
           tr.y+=(cy-tr.y)*tr.lag;
-          tr.rot+=tr.rs;
+          tr.rot+=tr.rs; tr.rx+=tr.rxs; tr.ry+=tr.rys;
           var dx=cx-tr.x,dy=cy-tr.y,dist=Math.sqrt(dx*dx+dy*dy);
-          var op=Math.min(dist/80,1)*tr.baseOp;
-          tr.el.style.left=tr.x+'px';
-          tr.el.style.top=tr.y+'px';
+          // V-formation offset: spread perpendicular to movement direction
+          var fanAmount = dist * 0.4 * tr.spread;
+          var ox = tr.x + perpX * fanAmount * tr.side;
+          var oy = tr.y + perpY * fanAmount * tr.side;
+          var op=Math.min(dist/60,1)*tr.baseOp;
+          tr.el.style.left=ox+'px';
+          tr.el.style.top=oy+'px';
           tr.el.style.opacity=op;
-          tr.el.style.transform='translate(-50%,-50%) rotate('+tr.rot+'deg)';
+          tr.el.style.transform='translate(-50%,-50%) perspective(400px) rotateX('+tr.rx+'deg) rotateY('+tr.ry+'deg) rotateZ('+tr.rot+'deg)';
         }
       })();
 
