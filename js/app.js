@@ -289,7 +289,7 @@
       {text:'AI Data Analysis',icon:'<span class="ico ico-cpu"></span>',type:'Category',url:'automations.html#data'},
       {text:'AI Employees',icon:'<span class="ico ico-cpu"></span>',type:'Category',url:'automations.html#insane'},
       {text:'Pricing Plans',icon:'<span class="ico ico-dollar"></span>',type:'Info',url:'pricing.html'},
-      {text:'Free Automation Plan',icon:'<span class="ico ico-document"></span>',type:'Info',url:'blueprint.html'},
+      {text:'Get a Website Built',icon:'<span class="ico ico-document"></span>',type:'Info',url:'blueprint.html'},
       {text:'Shop Plans',icon:'<span class="ico ico-cart"></span>',type:'Info',url:'shop.html'},
       {text:'Book a Call',icon:'<span class="ico ico-calendar"></span>',type:'Info',url:'schedule.html'},
       {text:'Salon & Spa',icon:'<span class="ico ico-scissors"></span>',type:'Industry',url:'industry.html?type=salon'},
@@ -388,7 +388,7 @@
   if(bpForm){
     bpForm.addEventListener('submit',function(e){
       e.preventDefault();
-      sendForm(bpForm, 'New Blueprint Request', function(){
+      sendForm(bpForm, 'New Website Request', function(){
         bpForm.style.display='none';
         var success = document.getElementById('formSuccess');
         if(success) success.style.display='block';
