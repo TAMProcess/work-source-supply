@@ -727,7 +727,7 @@
   }
 
   /* ============ FORM SUBMIT HELPER ============ */
-  var FORM_EMAIL = 'Info@worksource.supplies';
+  var FORM_EMAIL = 'info@worksource.supplies';
   function sendForm(formEl, subject, onSuccess){
     var data = new FormData(formEl);
     var obj = {_subject: subject};

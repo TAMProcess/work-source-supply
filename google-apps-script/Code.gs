@@ -15,7 +15,7 @@
 
 // ═══════════ CONFIGURATION ═══════════
 var SHEET_ID = '';  // Paste your Google Sheet ID here (from the URL)
-var OWNER_EMAIL = 'Info@worksource.supplies';
+var OWNER_EMAIL = 'info@worksource.supplies';
 var BUSINESS_NAME = 'Work Source Supply';
 var CONFIRM_EXPIRY_MINUTES = 30;      // Unconfirmed bookings expire after 30 min
 var MAX_BOOKINGS_PER_EMAIL_PER_DAY = 2; // Rate limit per email per day
