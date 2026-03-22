@@ -105,6 +105,7 @@
 
           <!-- STEP 3: Details -->
           <div class="intake-panel" id="step3">
+            <div id="selectionSummary3" class="intake-selection-summary" style="display:none;padding:.75rem 1rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;margin-bottom:1.25rem;font-size:.82rem;line-height:1.6"></div>
             <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">Help us understand your business</h3>
             <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">The more detail you share, the better we can tailor your system. No wrong answers here.</p>
             <div class="form-group">
@@ -143,6 +144,20 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="intake-website">Existing website (if you have one)</label>
+              <input type="text" id="intake-website" name="existingWebsite" placeholder="e.g., www.mybusiness.com">
+            </div>
+            <div class="form-group">
+              <label for="intake-timeline">Preferred launch timeline</label>
+              <select id="intake-timeline" name="timeline">
+                <option value="" disabled selected>Select</option>
+                <option value="asap">ASAP</option>
+                <option value="1-week">Within 1 Week</option>
+                <option value="1-month">Within 1 Month</option>
+                <option value="no-rush">No Rush</option>
+              </select>
+            </div>
+            <div class="form-group">
               <label for="intake-upload">Have files to share? (menus, brochures, logos, etc.)</label>
               <input type="text" id="intake-upload" name="files" placeholder="Paste a Google Drive, Dropbox, or any link here">
               <p style="font-size:.68rem;color:var(--text-muted);margin-top:.3rem">Tip: Upload your files to Google Drive and paste the share link here. We'll review everything.</p>
@@ -152,6 +167,7 @@
 
           <!-- STEP 4: Contact Info -->
           <div class="intake-panel" id="step4">
+            <div id="selectionSummary4" class="intake-selection-summary" style="display:none;padding:.75rem 1rem;background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.15);border-radius:8px;margin-bottom:1.25rem;font-size:.82rem;line-height:1.6"></div>
             <h3 style="font-family:var(--font-heading);font-size:1.05rem;font-weight:600;margin-bottom:.5rem">How can we reach you?</h3>
             <p style="font-size:.82rem;color:var(--text-dim);margin-bottom:1.25rem">We'll review your info and reach out within 24 hours with a personalized plan.</p>
             <div class="form-row">
@@ -171,6 +187,10 @@
             <div class="form-group">
               <label for="intake-phone">Phone (optional)</label>
               <input type="tel" id="intake-phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="intake-city">City &amp; State</label>
+              <input type="text" id="intake-city" name="cityState" placeholder="e.g., Virginia Beach, VA" autocomplete="address-level2">
             </div>
             <div class="form-group">
               <label for="intake-prefer">Preferred contact method</label>

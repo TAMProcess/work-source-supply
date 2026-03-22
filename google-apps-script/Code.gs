@@ -14,7 +14,7 @@
  */
 
 // ═══════════ CONFIGURATION ═══════════
-var SHEET_ID = '';  // Paste your Google Sheet ID here (from the URL)
+var SHEET_ID = '1HPBlkTvgNYh43DIOG0wwHFurmI8N9bDYx31Ok8HJ-Fg';
 var OWNER_EMAIL = 'info@worksource.supplies';
 var BUSINESS_NAME = 'Work Source Supply';
 var CONFIRM_EXPIRY_MINUTES = 30;      // Unconfirmed bookings expire after 30 min

@@ -478,7 +478,7 @@
     ];
 
     /* ---------- BOOKING PERSISTENCE ---------- */
-    var BOOKINGS_API = 'https://script.google.com/macros/s/AKfycbzPpt86WmwJb_37jzw4J1JZdgohrpvJ6cvw4fcBWj6E5oPeKplElFgaJwJNYCSHzwDz/exec';
+    var BOOKINGS_API = 'https://script.google.com/macros/s/AKfycbzwYytmJWgUEDVQs94rvWrHfgemsDbNylTYTfgVHk24hu2kbPRYJw2LRze287uaAkWS/exec';
     var bookedSlots = {}; // { "2026-03-20": ["10:00 AM", "2:30 PM"] }
 
     function dateKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
@@ -621,16 +621,20 @@
     if(scheduleForm){
       scheduleForm.addEventListener('submit', function(e){
         e.preventDefault();
+        if(!selectedDate || !selectedTime){
+          alert('Please select a date and time before booking.');
+          return;
+        }
         var tz = tzSelect ? tzSelect.value : 'America/New_York';
         var summary = document.getElementById('slotSummary');
         var estTime = summary ? summary.getAttribute('data-est') : '';
         /* Add booking details to form data */
-        var dateStr = selectedDate ? selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}) : 'Not selected';
+        var dateStr = selectedDate.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
         var hiddenFields = {
           booking_date: dateStr,
-          booking_time_customer: selectedTime || 'Not selected',
+          booking_time_customer: selectedTime,
           customer_timezone: tz,
-          booking_time_est: estTime || selectedTime || 'N/A'
+          booking_time_est: estTime || selectedTime
         };
         /* Create temp hidden inputs */
         Object.keys(hiddenFields).forEach(function(k){
@@ -641,12 +645,13 @@
         var btn = scheduleForm.querySelector('button[type="submit"]');
         btn.textContent = 'Booking...';
         btn.disabled = true;
+        var bookName = scheduleForm.querySelector('[name="name"]').value;
+        var bookEmail = scheduleForm.querySelector('[name="email"]').value;
+        var dk = dateKey(selectedDate);
+        saveBooking(dk, selectedTime, bookName, bookEmail);
         sendForm(scheduleForm, 'New Consultation Booking', function(){
-          /* Save booking so the slot becomes unavailable */
-          var dk = dateKey(selectedDate);
           if(!bookedSlots[dk]) bookedSlots[dk] = [];
           bookedSlots[dk].push(selectedTime);
-          saveBooking(dk, selectedTime, scheduleForm.querySelector('[name="name"]').value, scheduleForm.querySelector('[name="email"]').value);
           scheduleForm.style.display = 'none';
           var success = document.getElementById('scheduleSuccess');
           if(success) success.style.display = 'block';
@@ -666,6 +671,26 @@
     var urlParams = new URLSearchParams(location.search);
     var planParam = urlParams.get('plan');
 
+    function getSelectionSummaryHTML(){
+      var bizSel = document.querySelectorAll('#step1 .intake-option.selected');
+      var bizLabels = Array.prototype.map.call(bizSel, function(o){ return o.querySelector('.intake-option-label').textContent; });
+      var needsSel = document.querySelectorAll('#step2 .intake-option.selected');
+      var needsLabels = Array.prototype.map.call(needsSel, function(o){ return o.querySelector('.intake-option-label').textContent; });
+      if(!bizLabels.length && !needsLabels.length) return '';
+      var html = '';
+      if(bizLabels.length) html += '<strong>Business type:</strong> ' + bizLabels.join(', ') + '<br>';
+      if(needsLabels.length) html += '<strong>Services needed:</strong> ' + needsLabels.join(', ');
+      return html;
+    }
+
+    function updateSelectionSummaries(){
+      var html = getSelectionSummaryHTML();
+      ['selectionSummary3','selectionSummary4'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el){ el.innerHTML = html; el.style.display = html ? 'block' : 'none'; }
+      });
+    }
+
     function showStep(n){
       intakePanels.forEach(function(p, i){ p.classList.toggle('active', i === n); });
       intakeSteps.forEach(function(s, i){
@@ -674,6 +699,7 @@
         if(i === n) s.classList.add('active');
       });
       currentStep = n;
+      if(n >= 2) updateSelectionSummaries();
     }
 
     // Option click handlers
@@ -717,7 +743,8 @@
         if(!h2){ h2 = document.createElement('input'); h2.type='hidden'; h2.name='needs'; intakeForm.appendChild(h2); }
         h2.value = needsVal || 'Not selected';
         sendForm(intakeForm, 'New Get Started Inquiry', function(){
-          document.getElementById('intakeFlow').style.display = 'none';
+          intakeForm.style.display = 'none';
+          document.getElementById('intakeProgress').style.display = 'none';
           document.getElementById('intakeSuccess').style.display = 'block';
         });
       });
